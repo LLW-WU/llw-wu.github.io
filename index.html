@@ -4,9 +4,276 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Your Name</title>
+  <meta name="description" content="Academic homepage of Your Name." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --accent:#0f62fe;
+      --max: 980px;
+      --radius: 10px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Top nav */
+    .nav{
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .nav-left{
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+    .nav-right{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 14.5px;
+    }
+
+    /* Layout */
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 170px 1fr;
+      gap: 26px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    @media (max-width: 720px){
+      .hero{grid-template-columns: 1fr}
+    }
+
+    .avatar{
+      width: 170px;
+      height: 170px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #f3f4f6;
+      object-fit: cover;
+    }
+
+    .name{
+      font-size: 30px;
+      font-weight: 700;
+      margin: 0 0 6px 0;
+    }
+    .affil{
+      color: var(--muted);
+      margin: 0 0 10px 0;
+    }
+    .bio{
+      margin: 0 0 12px 0;
+    }
+    .links{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      font-size: 14.5px;
+    }
+
+    /* Section */
+    section{
+      padding-top: 26px;
+    }
+    .sec-title{
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 14px 0;
+    }
+    .divider{
+      height: 1px;
+      background: var(--line);
+      margin: 22px 0 8px;
+    }
+
+    /* Publication item */
+    .pub{
+      display:grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 10px 0;
+    }
+    @media (max-width: 720px){
+      .pub{grid-template-columns: 1fr}
+    }
+    .thumb{
+      width: 120px;
+      height: 80px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #f3f4f6;
+      object-fit: cover;
+    }
+    .pub-title{
+      font-weight: 650;
+      margin: 0 0 2px 0;
+    }
+    .pub-authors{
+      color: var(--muted);
+      margin: 0 0 2px 0;
+      font-size: 14.6px;
+    }
+    .pub-venue{
+      color: var(--muted);
+      margin: 0 0 6px 0;
+      font-size: 14.2px;
+    }
+    .pub-links{
+      font-size: 14.2px;
+    }
+    .pub-links span{color: var(--muted)}
+  </style>
 </head>
+
 <body>
-  <h1>Hello! I'm Your Name</h1>
-  <p>This is my GitHub Pages site.</p>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">Your Name</div>
+      <div class="nav-right">
+        <a href="#home">Home</a>
+        <a href="#publications">Publications</a>
+        <a href="#library">Library</a>
+        <a href="#demos">Demos</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- Hero / Home -->
+    <section id="home">
+      <div class="hero">
+        <!-- Replace with your photo -->
+        <img class="avatar" src="photo.jpg" alt="Your photo" />
+
+        <div>
+          <h1 class="name">Your Name</h1>
+          <p class="affil">
+            Ph.D. Student / Researcher, Your Lab, Your University
+          </p>
+          <p class="bio">
+            I work on <b>Magnetic Particle Imaging (MPI)</b>, with interests in
+            image reconstruction, inverse problems, and nanoparticle design.
+            (Replace this paragraph with your short bio.)
+          </p>
+          <div class="links">
+            <span>Email: <a href="mailto:you@email.com">you@email.com</a></span>
+            <span> / </span>
+            <a href="#">Google Scholar</a>
+            <span> / </span>
+            <a href="#">GitHub</a>
+            <span> / </span>
+            <a href="#">CV (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2 class="sec-title">Publications</h2>
+
+      <!-- Item 1 -->
+      <div class="pub">
+        <img class="thumb" src="pub1.jpg" alt="thumbnail" />
+        <div>
+          <p class="pub-title">Title of Your Paper One</p>
+          <p class="pub-authors">Your Name, Coauthor A, Coauthor B</p>
+          <p class="pub-venue">Conference/Journal, Year</p>
+          <p class="pub-links">
+            <a href="#">Paper</a> <span>|</span>
+            <a href="#">ArXiv</a> <span>|</span>
+            <a href="#">Code</a> <span>|</span>
+            <a href="#">Project Page</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="pub">
+        <img class="thumb" src="pub2.jpg" alt="thumbnail" />
+        <div>
+          <p class="pub-title">Title of Your Paper Two</p>
+          <p class="pub-authors">Your Name, Coauthor C</p>
+          <p class="pub-venue">Conference/Journal, Year</p>
+          <p class="pub-links">
+            <a href="#">Paper</a> <span>|</span>
+            <a href="#">Video</a> <span>|</span>
+            <a href="#">Dataset</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+    </section>
+
+    <!-- Library (software / datasets / tools) -->
+    <section id="library">
+      <h2 class="sec-title">Library</h2>
+
+      <div class="pub">
+        <img class="thumb" src="lib1.jpg" alt="thumbnail" />
+        <div>
+          <p class="pub-title">Project / Toolkit Name</p>
+          <p class="pub-authors">
+            A one-sentence description of what this library does.
+          </p>
+          <p class="pub-links">
+            <a href="#">GitHub</a> <span>|</span>
+            <a href="#">Docs</a> <span>|</span>
+            <a href="#">Demo</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+    </section>
+
+    <!-- Demos / Talks -->
+    <section id="demos">
+      <h2 class="sec-title">Demos / Talks</h2>
+
+      <ul>
+        <li>
+          <b>Demo Title</b> — Venue, Year.
+          <a href="#">Link</a>
+        </li>
+        <li>
+          <b>Talk Title</b> — Workshop/Seminar, Year.
+          <a href="#">Slides</a>
+        </li>
+      </ul>
+    </section>
+  </main>
 </body>
 </html>
