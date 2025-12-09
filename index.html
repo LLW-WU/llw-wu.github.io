@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LIU Lingwen</title>
-  <meta name="description" content="Academic homepage of Your Name." />
+  <title>LLW-WU | Academic Homepage</title>
+  <meta name="description" content="Academic homepage." />
 
   <style>
     :root{
@@ -16,7 +16,6 @@
       --max: 980px;
       --radius: 10px;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -44,6 +43,7 @@
       align-items:center;
       justify-content: space-between;
       gap: 12px;
+      flex-wrap: wrap;
     }
     .nav-left{
       font-weight: 600;
@@ -97,9 +97,11 @@
     .links{
       display:flex;
       flex-wrap: wrap;
-      gap: 10px 14px;
+      gap: 6px 10px;
       font-size: 14.5px;
+      color: var(--muted);
     }
+    .links a{font-weight: 500}
 
     /* Section */
     section{
@@ -110,33 +112,21 @@
       font-weight: 700;
       margin: 0 0 14px 0;
     }
-    .divider{
-      height: 1px;
-      background: var(--line);
-      margin: 22px 0 8px;
-    }
 
     /* Publication item */
     .pub{
       display:grid;
-      grid-template-columns: 120px 1fr;
-      gap: 16px;
-      padding: 10px 0;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
     }
-    @media (max-width: 720px){
-      .pub{grid-template-columns: 1fr}
-    }
-    .thumb{
-      width: 120px;
-      height: 80px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: #f3f4f6;
-      object-fit: cover;
-    }
+    .pub:last-child{border-bottom:none}
+
     .pub-title{
       font-weight: 650;
       margin: 0 0 2px 0;
+      font-size: 16.8px;
     }
     .pub-authors{
       color: var(--muted);
@@ -152,6 +142,28 @@
       font-size: 14.2px;
     }
     .pub-links span{color: var(--muted)}
+    .badge{
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      margin-left: 6px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .meta-right{
+      text-align: right;
+      min-width: 110px;
+      color: var(--muted);
+      font-size: 13.5px;
+      padding-top: 2px;
+    }
+    .year{
+      font-weight: 600;
+      color: var(--text);
+      font-size: 13.5px;
+    }
   </style>
 </head>
 
@@ -159,41 +171,43 @@
   <!-- Nav -->
   <nav class="nav">
     <div class="nav-inner">
-      <div class="nav-left">Your Name</div>
+      <div class="nav-left">LiuLW</div>
       <div class="nav-right">
         <a href="#home">Home</a>
         <a href="#publications">Publications</a>
-        <a href="#library">Library</a>
-        <a href="#demos">Demos</a>
+        <a href="#projects">Projects</a>
       </div>
     </div>
   </nav>
 
   <main class="wrap">
-    <!-- Hero / Home -->
+    <!-- Home -->
     <section id="home">
       <div class="hero">
-        <!-- Replace with your photo -->
+        <!-- Optional: replace with your photo file, or delete this img tag -->
         <img class="avatar" src="selfphoto.jpg" alt="Your photo" />
 
         <div>
           <h1 class="name">LIU Lingwen</h1>
           <p class="affil">
-            Ph.D. Student / Researcher, Image Media Lab, Waseda University
+            PhD Student, Waseda University
           </p>
           <p class="bio">
-            I work on <b>Magnetic Particle Imaging (MPI)</b>, with interests in
-            image reconstruction, inverse problems, and nanoparticle design.
-            (Replace this paragraph with your short bio.)
+            I am currently a Ph.D. student at Waseda University.
+            Before that, I received my M.S. in Computer Science from Northeastern University.
+            My research interests include Magnetic Particle Imaging (MPI) reconstruction, 
+            complex network analysis, medical imaging, and deep learning.
+            <!-- I am particularly interested in combining data-driven methods with physical and structural priors to improve reconstruction quality and clinical applicability. -->
           </p>
           <div class="links">
-            <span>Email: <a href="mailto:you@email.com">you@email.com</a></span>
-            <span> / </span>
-            <a href="#">Google Scholar</a>
-            <span> / </span>
-            <a href="#">GitHub</a>
-            <span> / </span>
-            <a href="#">CV (PDF)</a>
+            <span>Email:</span>
+            <a href="liulingwen@akane.waseda.jp">liulingwen@akane.waseda.jp</a>
+            <span>·</span>
+            <a href="https://scholar.google.com/citations?user=CKPYcu4AAAAJ&hl=en&oi=ao">Google Scholar</a>
+            <span>·</span>
+            <a href="https://github.com/LLW-WU">GitHub</a>
+            <!-- <span>·</span>
+            <a href="#">CV (PDF)</a> -->
           </div>
         </div>
       </div>
@@ -203,75 +217,217 @@
     <section id="publications">
       <h2 class="sec-title">Publications</h2>
 
-      <!-- Item 1 -->
+      <!-- 2025 -->
       <div class="pub">
-        <img class="thumb" src="pub1.jpg" alt="thumbnail" />
         <div>
-          <p class="pub-title">Title of Your Paper One</p>
-          <p class="pub-authors">Your Name, Coauthor A, Coauthor B</p>
-          <p class="pub-venue">Conference/Journal, Year</p>
-          <p class="pub-links">
-            <a href="#">Paper</a> <span>|</span>
+          <div class="pub-title">
+            BrainOSM: Outlier screening for multi-view functional brain network analysis
+            <!-- <span class="badge">New</span> -->
+          </div>
+          <div class="pub-authors">
+            G Guo, G Wen, L Liu, R Song, P Cao, J Yang, OR Zaiane
+          </div>
+          <div class="pub-venue">
+            Computer Methods and Programs in Biomedicine, 109092
+          </div>
+          <div class="pub-links">
+            <a href="https://www.sciencedirect.com/science/article/pii/S0169260725005097">Paper</a> 
+            <!-- <span>|</span> -->
+            <!-- <a href="#">Code</a> <span>|</span> -->
+            <!-- <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2025</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div>
+          <div class="pub-title">
+            Divergent neural trajectories in young patients with major depressive episodes:
+            longitudinal subtypes and their predictive value for treatment outcomes
+          </div>
+          <div class="pub-authors">
+            J Duan, G Wen, L Liu, S Gu, J Zhou, J Xu, R Zhu, S Hu, P Cao, F Wang
+          </div>
+          <div class="pub-venue">
+            Science Bulletin, S2095-9273 (25) 00917-X
+          </div>
+          <div class="pub-links">
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41062371/">Paper</a> 
+            <!-- <span>|</span>
+            <a href="#">Supplement</a> <span>|</span>
+            <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2025</div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="pub">
+        <div>
+          <div class="pub-title">
+            Capturing temporal node evolution via self-supervised learning:
+            A new perspective on dynamic graph learning
+            <!-- <span class="badge">Citations: 7</span> -->
+          </div>
+          <div class="pub-authors">
+            L Liu, G Wen, P Cao, J Yang, W Li, OR Zaiane
+          </div>
+          <div class="pub-venue">
+            Proceedings of the 17th ACM International Conference on Web Search and Data Mining
+          </div>
+          <div class="pub-links">
+            <a href="https://dl.acm.org/doi/abs/10.1145/3616855.3635765">Paper</a> 
+            <!-- <span>|</span>
             <a href="#">ArXiv</a> <span>|</span>
             <a href="#">Code</a> <span>|</span>
-            <a href="#">Project Page</a>
-          </p>
+            <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2024</div>
         </div>
       </div>
-
-      <!-- Item 2 -->
-      <div class="pub">
-        <img class="thumb" src="pub2.jpg" alt="thumbnail" />
-        <div>
-          <p class="pub-title">Title of Your Paper Two</p>
-          <p class="pub-authors">Your Name, Coauthor C</p>
-          <p class="pub-venue">Conference/Journal, Year</p>
-          <p class="pub-links">
-            <a href="#">Paper</a> <span>|</span>
-            <a href="#">Video</a> <span>|</span>
-            <a href="#">Dataset</a>
-          </p>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-    </section>
-
-    <!-- Library (software / datasets / tools) -->
-    <section id="library">
-      <h2 class="sec-title">Library</h2>
 
       <div class="pub">
-        <img class="thumb" src="lib1.jpg" alt="thumbnail" />
         <div>
-          <p class="pub-title">Project / Toolkit Name</p>
-          <p class="pub-authors">
-            A one-sentence description of what this library does.
-          </p>
-          <p class="pub-links">
-            <a href="#">GitHub</a> <span>|</span>
-            <a href="#">Docs</a> <span>|</span>
-            <a href="#">Demo</a>
-          </p>
+          <div class="pub-title">
+            Heterogeneous Graph Representation Learning Framework for
+            Resting-State Functional Connectivity Analysis
+            <!-- <span class="badge">Citations: 4</span> -->
+          </div>
+          <div class="pub-authors">
+            G Wen, P Cao, L Liu, M Hao, S Liu, J Zheng, J Yang, OR Zaiane, F Wang
+          </div>
+          <div class="pub-venue">
+            IEEE Transactions on Medical Imaging
+          </div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10781429">Paper</a> 
+            <!-- <span>|</span>
+            <a href="#">Code</a> <span>|</span>
+            <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2024</div>
         </div>
       </div>
 
-      <div class="divider"></div>
+      <div class="pub">
+        <div>
+          <div class="pub-title">
+            Towards Disease-Aware Self-Supervised Dynamic Brain Network Learning For Mental Diagnosis
+            <!-- <span class="badge">Citations: 1</span> -->
+          </div>
+          <div class="pub-authors">
+            Z Lin, G Wen, P Cao, L Liu, J Yang, X Zhu, OR Zaiane, F Wang
+          </div>
+          <div class="pub-venue">
+            ICASSP 2024 - IEEE International Conference on Acoustics, Speech and Signal Processing
+          </div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10446417">Paper</a> 
+            <!-- <span>|</span>
+            <a href="#">ArXiv</a> <span>|</span>
+            <a href="#">Code</a> <span>|</span>
+            <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2024</div>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="pub">
+        <div>
+          <div class="pub-title">
+            BrainTGL: A dynamic graph representation learning model for brain network analysis
+            <!-- <span class="badge">Citations: 66</span> -->
+          </div>
+          <div class="pub-authors">
+            L Liu, G Wen, P Cao, T Hong, J Yang, X Zhang, OR Zaiane
+          </div>
+          <div class="pub-venue">
+            Computers in Biology and Medicine 153, 106521
+          </div>
+          <div class="pub-links">
+            <a href="https://www.sciencedirect.com/science/article/pii/S001048252201229X">Paper</a> 
+            <!-- <span>|</span>
+            <a href="#">ArXiv</a> <span>|</span>
+            <a href="#">Code</a> <span>|</span>
+            <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2023</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div>
+          <div class="pub-title">
+            Graph self-supervised learning with application to brain networks analysis
+            <!-- <span class="badge">Citations: 49</span> -->
+          </div>
+          <div class="pub-authors">
+            G Wen, P Cao, L Liu, J Yang, X Zhang, F Wang, OR Zaiane
+          </div>
+          <div class="pub-venue">
+            IEEE Journal of Biomedical and Health Informatics 27 (8), 4154-4165
+          </div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10122156">Paper</a> 
+            <!-- <span>|</span>
+            <a href="#">ArXiv</a> <span>|</span>
+            <a href="#">Code</a> <span>|</span>
+            <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2023</div>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="pub">
+        <div>
+          <div class="pub-title">
+            Research and verification of a new relaxation technology based on virtual reality for human
+            psychological security and psychosomatic recovery
+            <!-- <span class="badge">Citations: 10</span> -->
+          </div>
+          <div class="pub-authors">
+            L Gu, B Sun, L Liu, Y Li, Q Zhang, J Yang
+          </div>
+          <div class="pub-venue">
+            2021 IEEE International Conference on Intelligence and Safety for Robotics
+          </div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/9419557">Paper</a> 
+            <!-- <span>|</span>
+            <a href="#">BibTeX</a> -->
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="year">2021</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Demos / Talks -->
-    <section id="demos">
-      <h2 class="sec-title">Demos / Talks</h2>
-
+    <!-- Projects (simple placeholder) -->
+    <section id="projects">
+      <h2 class="sec-title">Projects</h2>
       <ul>
-        <li>
-          <b>Demo Title</b> — Venue, Year.
-          <a href="#">Link</a>
-        </li>
-        <li>
-          <b>Talk Title</b> — Workshop/Seminar, Year.
-          <a href="#">Slides</a>
-        </li>
+        <li><b> Waiting </b> — Waiting. 
+            <!-- <a href="#">GitHub</a></li> -->
+        <!-- <li><b>Brain network analysis toolkit</b> — short one-line description. <a href="#">GitHub</a></li> -->
+        <!-- <li><b>Dynamic graph SSL demos</b> — short one-line description. <a href="#">Demo</a></li> -->
       </ul>
     </section>
   </main>
