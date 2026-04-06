@@ -89,7 +89,14 @@
     }
     .affil{
       color: var(--muted);
-      margin: 0 0 10px 0;
+      margin: 0 0 6px 0;
+    }
+    .tagline {
+      font-size: 15.5px;
+      font-style: italic;
+      color: var(--accent);
+      margin: 0 0 12px 0;
+      font-weight: 500;
     }
     .bio{
       margin: 0 0 12px 0;
@@ -164,6 +171,62 @@
       color: var(--text);
       font-size: 13.5px;
     }
+
+    /* Project item */
+    .proj{
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .proj:last-child{border-bottom:none}
+    .proj-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .proj-title{
+      font-weight: 650;
+      font-size: 16px;
+      margin: 0;
+    }
+    .proj-period{
+      font-size: 13.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .proj-meta{
+      color: var(--muted);
+      font-size: 13.8px;
+      margin: 0 0 8px 0;
+    }
+    .proj-bullets{
+      margin: 0;
+      padding-left: 20px;
+      font-size: 14.5px;
+      color: var(--text);
+    }
+    .proj-bullets li{
+      margin-bottom: 4px;
+    }
+    .proj-desc{
+      font-size: 14.5px;
+      margin: 0;
+    }
+    .proj-hook {
+      font-size: 14.8px;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 6px 0;
+    }
+    code {
+      background: #f3f4f6;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 13px;
+    }
   </style>
 </head>
 
@@ -175,7 +238,8 @@
       <div class="nav-right">
         <a href="#home">Home</a>
         <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
+        <a href="#research-projects">Research Projects</a>
+        <a href="#internship-visits">Internship &amp; Visits</a>
       </div>
     </div>
   </nav>
@@ -184,20 +248,38 @@
     <!-- Home -->
     <section id="home">
       <div class="hero">
-        <!-- Optional: replace with your photo file, or delete this img tag -->
-        <img class="avatar" src="selfphoto2.jpg" alt="Your photo" />
+        <img class="avatar" src="selfphoto.jpg" alt="Your photo" />
 
         <div>
           <h1 class="name">LIU Lingwen</h1>
           <p class="affil">
-            PhD Student | Researcher | Waseda University
+            Ph.D. Student &nbsp;·&nbsp; Waseda University
+          </p>
+          <p class="tagline">
+            Deep learning for medical image reconstruction &mdash; and the clinical intelligence that follows.
           </p>
           <p class="bio">
-            I am currently a Ph.D. student at Waseda University.
-            Before that, I received my M.S. in Computer Science from Northeastern University.
-            My research interests include Magnetic Particle Imaging (MPI) reconstruction, 
-            complex network analysis, medical imaging, and deep learning.
-            <!-- I am particularly interested in combining data-driven methods with physical and structural priors to improve reconstruction quality and clinical applicability. -->
+            I am a Ph.D. student at Waseda University. My current research focuses on
+            <strong>deep learning for Magnetic Particle Imaging (MPI) reconstruction</strong> —
+            developing neural networks that recover high-quality images from raw MPI
+            measurements, a problem that sits at the boundary of inverse problems,
+            signal processing, and modern deep learning.
+          </p>
+          <p class="bio">
+            Before Waseda, I worked on <strong>graph AI for brain network analysis</strong>
+            during my M.S. at Northeastern University (China). I built self-supervised
+            graph neural networks that model functional brain connectivity to support
+            more objective diagnosis and more personalized treatment of neurological
+            and psychiatric disorders — working closely with clinical collaborators to
+            validate the results. That experience shaped how I think about the full
+            arc from raw medical measurement to clinical decision, and continues to
+            inform how I approach reconstruction quality in my current work.
+          </p>
+          <p class="bio">
+            My work has appeared at <em>WSDM 2024</em>,
+            <em>DASFAA 2025</em>, <em>Science Bulletin</em>, and <em>IEEE TMI</em>.
+            I also spent four months at Goldwind (Fortune Global 500) building energy
+            forecasting systems that went into production.
           </p>
           <div class="links">
             <span>Email:</span>
@@ -206,8 +288,6 @@
             <a href="https://scholar.google.com/citations?user=CKPYcu4AAAAJ&hl=en&oi=ao">Google Scholar</a>
             <span>·</span>
             <a href="https://github.com/LLW-WU">GitHub</a>
-            <!-- <span>·</span>
-            <a href="#">CV (PDF)</a> -->
           </div>
         </div>
       </div>
@@ -230,22 +310,18 @@
             DASFAA 2025 - International Conference on Database Systems for Advanced Applications, 2025
           </div>
           <div class="pub-links">
-            <a href="https://dasfaa2025.github.io/paper/research/research_431_paper.pdf">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">Supplement</a> <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://dasfaa2025.github.io/paper/research/research_431_paper.pdf">Paper</a>
           </div>
         </div>
         <div class="meta-right">
           <div class="year">2025</div>
         </div>
       </div>
-      
+
       <div class="pub">
         <div>
           <div class="pub-title">
             BrainOSM: Outlier screening for multi-view functional brain network analysis
-            <!-- <span class="badge">New</span> -->
           </div>
           <div class="pub-authors">
             G Guo, G Wen, L Liu, R Song, P Cao, J Yang, OR Zaiane
@@ -254,10 +330,7 @@
             Computer Methods and Programs in Biomedicine, 109092
           </div>
           <div class="pub-links">
-            <a href="https://www.sciencedirect.com/science/article/pii/S0169260725005097">Paper</a> 
-            <!-- <span>|</span> -->
-            <!-- <a href="#">Code</a> <span>|</span> -->
-            <!-- <a href="#">BibTeX</a> -->
+            <a href="https://www.sciencedirect.com/science/article/pii/S0169260725005097">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -278,10 +351,7 @@
             Science Bulletin, S2095-9273 (25) 00917-X
           </div>
           <div class="pub-links">
-            <a href="https://pubmed.ncbi.nlm.nih.gov/41062371/">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">Supplement</a> <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41062371/">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -295,7 +365,6 @@
           <div class="pub-title">
             Capturing temporal node evolution via self-supervised learning:
             A new perspective on dynamic graph learning
-            <!-- <span class="badge">Citations: 7</span> -->
           </div>
           <div class="pub-authors">
             L Liu, G Wen, P Cao, J Yang, W Li, OR Zaiane
@@ -304,11 +373,7 @@
             WSDM 2024 - Proceedings of the 17th ACM International Conference on Web Search and Data Mining
           </div>
           <div class="pub-links">
-            <a href="https://dl.acm.org/doi/abs/10.1145/3616855.3635765">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">ArXiv</a> <span>|</span>
-            <a href="#">Code</a> <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://dl.acm.org/doi/abs/10.1145/3616855.3635765">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -321,7 +386,6 @@
           <div class="pub-title">
             Heterogeneous Graph Representation Learning Framework for
             Resting-State Functional Connectivity Analysis
-            <!-- <span class="badge">Citations: 4</span> -->
           </div>
           <div class="pub-authors">
             G Wen, P Cao, L Liu, M Hao, S Liu, J Zheng, J Yang, OR Zaiane, F Wang
@@ -330,10 +394,7 @@
             IEEE Transactions on Medical Imaging
           </div>
           <div class="pub-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10781429">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">Code</a> <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://ieeexplore.ieee.org/abstract/document/10781429">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -345,7 +406,6 @@
         <div>
           <div class="pub-title">
             Towards Disease-Aware Self-Supervised Dynamic Brain Network Learning For Mental Diagnosis
-            <!-- <span class="badge">Citations: 1</span> -->
           </div>
           <div class="pub-authors">
             Z Lin, G Wen, P Cao, L Liu, J Yang, X Zhu, OR Zaiane, F Wang
@@ -354,11 +414,7 @@
             ICASSP 2024 - IEEE International Conference on Acoustics, Speech and Signal Processing
           </div>
           <div class="pub-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10446417">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">ArXiv</a> <span>|</span>
-            <a href="#">Code</a> <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://ieeexplore.ieee.org/abstract/document/10446417">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -371,7 +427,6 @@
         <div>
           <div class="pub-title">
             BrainTGL: A dynamic graph representation learning model for brain network analysis
-            <!-- <span class="badge">Citations: 66</span> -->
           </div>
           <div class="pub-authors">
             L Liu, G Wen, P Cao, T Hong, J Yang, X Zhang, OR Zaiane
@@ -380,11 +435,7 @@
             Computers in Biology and Medicine 153, 106521
           </div>
           <div class="pub-links">
-            <a href="https://www.sciencedirect.com/science/article/pii/S001048252201229X">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">ArXiv</a> <span>|</span>
-            <a href="#">Code</a> <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://www.sciencedirect.com/science/article/pii/S001048252201229X">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -396,7 +447,6 @@
         <div>
           <div class="pub-title">
             Graph self-supervised learning with application to brain networks analysis
-            <!-- <span class="badge">Citations: 49</span> -->
           </div>
           <div class="pub-authors">
             G Wen, P Cao, L Liu, J Yang, X Zhang, F Wang, OR Zaiane
@@ -405,11 +455,7 @@
             IEEE Journal of Biomedical and Health Informatics 27 (8), 4154-4165
           </div>
           <div class="pub-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10122156">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">ArXiv</a> <span>|</span>
-            <a href="#">Code</a> <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://ieeexplore.ieee.org/abstract/document/10122156">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -423,7 +469,6 @@
           <div class="pub-title">
             Research and verification of a new relaxation technology based on virtual reality for human
             psychological security and psychosomatic recovery
-            <!-- <span class="badge">Citations: 10</span> -->
           </div>
           <div class="pub-authors">
             L Gu, B Sun, L Liu, Y Li, Q Zhang, J Yang
@@ -432,9 +477,7 @@
             2021 IEEE International Conference on Intelligence and Safety for Robotics
           </div>
           <div class="pub-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/9419557">Paper</a> 
-            <!-- <span>|</span>
-            <a href="#">BibTeX</a> -->
+            <a href="https://ieeexplore.ieee.org/abstract/document/9419557">Paper</a>
           </div>
         </div>
         <div class="meta-right">
@@ -443,16 +486,131 @@
       </div>
     </section>
 
-    <!-- Projects (simple placeholder) -->
-    <section id="projects">
-      <h2 class="sec-title">Projects</h2>
-      <ul>
-        <li><b> Waiting </b> — Waiting. 
-            <!-- <a href="#">GitHub</a></li> -->
-        <!-- <li><b>Brain network analysis toolkit</b> — short one-line description. <a href="#">GitHub</a></li> -->
-        <!-- <li><b>Dynamic graph SSL demos</b> — short one-line description. <a href="#">Demo</a></li> -->
-      </ul>
+    <!-- Research Projects -->
+    <section id="research-projects">
+      <h2 class="sec-title">Research Projects</h2>
+
+      <!-- Graduate Project 1 -->
+      <div class="proj">
+        <div class="proj-header">
+          <p class="proj-title">Graph-based Brain Network Analysis for Neurological Disease Diagnosis</p>
+          <span class="proj-period">Nov 2022 – Oct 2023</span>
+        </div>
+        <p class="proj-meta">
+          Northeastern University (China) &nbsp;·&nbsp; University of Alberta &nbsp;·&nbsp; Nanjing Medical University
+        </p>
+        <p class="proj-hook">Can a graph neural network read an fMRI scan the way a clinician does?</p>
+        <p class="proj-desc">
+          Disease signals in the brain are subtle and distributed — no single region tells the full story.
+          I built graph-based deep learning models that capture these distributed functional patterns across the whole brain, achieving diagnostic accuracy above 70%, a threshold that collaborating physicians at Nanjing Medical University recognized as clinically meaningful.
+          This work was published at <em>Computers in Biology and Medicine</em> and presented at <em>WSDM 2024</em>.
+        </p>
+      </div>
+
+      <!-- Graduate Project 2 -->
+      <div class="proj">
+        <div class="proj-header">
+          <p class="proj-title">Personalized Treatment Prediction for Mental Disorders via Multi-modal Learning</p>
+          <span class="proj-period">Dec 2023 – June 2025</span>
+        </div>
+        <p class="proj-meta">
+          Northeastern University (China) &nbsp;·&nbsp; Nanjing Medical University
+        </p>
+        <p class="proj-hook">Same diagnosis, different drugs — can we predict who responds to what?</p>
+        <p class="proj-desc">
+          Two patients with the same psychiatric diagnosis can respond oppositely to the same treatment, yet this variability is rarely reflected in clinical decision-making.
+          I build multi-modal models that jointly analyze brain functional signals and behavioral patterns to identify biologically distinct patient subgroups — using clustering, PCA, and t-SNE to make the structure visible to clinicians.
+          The goal is to turn "personalized treatment" from a slogan into a data-driven workflow.
+        </p>
+      </div>
+
+      <!-- Graduate Project 3 -->
+      <div class="proj">
+        <div class="proj-header">
+          <p class="proj-title">Self-supervised Representation Learning on Complex and Dynamic Networks</p>
+          <span class="proj-period">May 2023 – June 2025</span>
+        </div>
+        <p class="proj-meta">
+          Northeastern University (China) &nbsp;·&nbsp; Peking University &nbsp;·&nbsp; University of Alberta
+        </p>
+        <p class="proj-hook">Most graph learning methods need labels. What if the graph itself is the teacher?</p>
+        <p class="proj-desc">
+          Labeling nodes in real-world networks is slow and expensive, yet the graph's own structure contains enormous latent information.
+          I design self-supervised methods that use structural and temporal cues — topology, evolution, neighborhood patterns — as free supervision signals.
+          The resulting representations generalize across domains: they surface anomalous financial transactions, uncover latent social communities, and improve brain disease classification without additional annotation.
+          This line of work appeared at <em>DASFAA 2025</em> and <em>IEEE JBHI</em>.
+        </p>
+      </div>
+
+      <!-- Undergraduate Project 1 -->
+      <div class="proj">
+        <div class="proj-header">
+          <p class="proj-title">Early Screening for Cerebral Palsy via Machine Vision and Motion Analysis</p>
+          <span class="proj-period">Sep 2020 – Jun 2021</span>
+        </div>
+        <p class="proj-meta">
+          Shenyang University of Technology &nbsp;·&nbsp; Shenyang Children's Hospital
+        </p>
+        <p class="proj-hook">Earlier diagnosis, better outcomes — using a camera to catch what eyes might miss.</p>
+        <p class="proj-desc">
+          Cerebral palsy is far more treatable when caught early, but early screening still depends on subjective clinical judgment.
+          I built an RGB-D motion capture system (Intel RealSense D435i) with a custom clinical interface to record infant movement, then trained deep learning models to extract subtle motor features predictive of cerebral palsy.
+          Pediatricians at Shenyang Children's Hospital reviewed the identified features and incorporated them into their early diagnostic protocol.
+        </p>
+      </div>
+
+      <!-- Undergraduate Project 2 -->
+      <div class="proj">
+        <div class="proj-header">
+          <p class="proj-title">Measuring Relaxation Response to Virtual Reality via Physiological Signals</p>
+          <span class="proj-period">Sep 2020 – Jun 2021</span>
+        </div>
+        <p class="proj-meta">
+          Shenyang University of Technology
+        </p>
+        <p class="proj-hook">Does VR actually relax you? We measured it.</p>
+        <p class="proj-desc">
+          VR therapy is often promoted for stress and anxiety, but its physiological effects had not been rigorously characterized.
+          I helped design experiments that collected EDA, EMG, and EEG signals while participants underwent structured VR relaxation scenarios, then used machine learning to identify consistent biomarkers of the relaxation response.
+          The results gave the first empirical grounding for this class of intervention, published at <em>IEEE ISR 2021</em>.
+        </p>
+      </div>
     </section>
+
+    <!-- Internship & Visits -->
+    <section id="internship-visits">
+      <h2 class="sec-title">Internship &amp; Visits</h2>
+
+      <!-- Goldwind Internship -->
+      <div class="proj">
+        <div class="proj-header">
+          <p class="proj-title">Data Science Intern — Goldwind</p>
+          <span class="proj-period">Oct 2024 – Jan 2025</span>
+        </div>
+        <p class="proj-meta">
+          Goldwind Science &amp; Technology Co., Ltd. (Fortune Global 500) &nbsp;·&nbsp; Beijing, China
+        </p>
+        <p class="proj-hook">Predicting energy supply and demand — three real deployments, all within 5% error.</p>
+        <p class="proj-desc">
+          At Goldwind, I built and shipped three forecasting systems: 14-day hourly electricity consumption for a provincial grid (Random Forest + XGBoost), next-day power generation for a campus microgrid under varying weather conditions (XGBoost + Lasso), and 14-day electricity spot price forecasting for a regional market (deep MLP in PyTorch). All three achieved ≤5% prediction error and were integrated into Goldwind's operational pipeline.
+        </p>
+      </div>
+
+      <!-- NTU Visit -->
+      <div class="proj">
+        <div class="proj-header">
+          <p class="proj-title">Research Visit — AI Lab, Singapore Centre for 3D Printing</p>
+          <span class="proj-period">Aug 2024</span>
+        </div>
+        <p class="proj-meta">
+          Nanyang Technological University, Singapore
+        </p>
+        <p class="proj-desc">
+          Visited NTU's AI Lab to explore how neural 3D reconstruction (NeRF) can improve precision in additive manufacturing — a problem that sits at the boundary of my medical imaging background and engineering applications. Discussions focused on translating reconstruction accuracy into measurable print quality, and opened avenues for future cross-disciplinary collaboration.
+        </p>
+      </div>
+    </section>
+
   </main>
 </body>
 </html>
