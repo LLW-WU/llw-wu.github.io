@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LIU Lingwen — research, data science and business design.">
+  <meta name="theme-color" content="#ffffff">
+  <title>LIU Lingwen | Personal Homepage</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="content.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="#home">LIU Lingwen</a>
+      <nav class="site-links" aria-label="External links" id="header-links"></nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <section class="intro" id="home" aria-label="About me">
+      <div class="portrait" id="portrait" aria-hidden="true"><span>LL</span></div>
+      <div class="intro-copy">
+        <h1 id="profile-name">LIU Lingwen</h1>
+        <p class="affiliation" id="profile-affiliation">Ph.D. Student · Waseda University</p>
+        <p class="bio" id="profile-bio"></p>
+        <p class="profile-links" id="profile-links"></p>
+      </div>
+    </section>
+
+    <section class="focus" aria-labelledby="focus-heading">
+      <h2 class="section-heading" id="focus-heading">My work</h2>
+      <div class="tabs" role="tablist" aria-label="Choose a focus area" id="focus-tabs">
+        <a id="tab-research" class="tab" href="#research" role="tab" aria-controls="panel-research" aria-selected="true">Research</a>
+        <a id="tab-data" class="tab" href="#data" role="tab" aria-controls="panel-data" aria-selected="false">Data Science</a>
+        <a id="tab-business" class="tab" href="#business" role="tab" aria-controls="panel-business" aria-selected="false">Business Design</a>
+      </div>
+      <div class="tab-panels" id="tab-panels" aria-live="polite">
+        <div class="loading-note">Loading content…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <span>LIU Lingwen · Personal homepage</span>
+    <span id="footer-email"></span>
+  </footer>
+</body>
+</html>
