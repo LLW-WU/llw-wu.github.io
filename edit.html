@@ -12,11 +12,20 @@
 <body class="editor-body">
   <header class="editor-head"><div class="container">
     <h1 class="editor-brand">个人主页 · 内容编辑</h1>
-    <a href="index.html" target="_blank" rel="noopener noreferrer">查看网站 ↗</a>
+    <a href="index.html" target="_blank" rel="noopener noreferrer">查看主页 ↗</a>
   </div></header>
   <main class="container editor-shell">
-    <p class="editor-intro">这里只负责写文字。先选栏目，再修改字段；项目可以新增或删除。完成后点击底部的<strong>“下载 content.js”</strong>，用下载的文件替换网站仓库里同名文件。</p>
-    <div class="editor-note">这是离线/静态编辑器，不需要账号。修改<strong>不会自动发布到网站</strong>；你下载文件并提交 GitHub 后才会更新。编辑中的草稿会尽可能保存在此浏览器。</div>
+    <p class="editor-intro">先选栏目，再选择要编辑的语言。<strong>中文和英文分开填写</strong>；修改项目标题、简介、流程等文字不需要碰 HTML。</p>
+    <div class="editor-note">编辑内容会尽可能保存在当前浏览器作为草稿，但不会自动发布。写完后下载 <strong>content.js</strong>，替换 GitHub 仓库中的同名文件并提交。</div>
+    <div class="editor-toolbar">
+      <div class="editor-locale" role="group" aria-label="选择要编辑的语言">
+        <span>正在编辑：</span>
+        <button type="button" data-content-lang="zh" aria-pressed="true">中文</button>
+        <button type="button" data-content-lang="en" aria-pressed="false">English</button>
+      </div>
+      <button type="button" class="btn" id="import-button">导入以前的 content.js</button>
+      <input type="file" id="import-file" accept=".js,.json,application/json,text/javascript" hidden>
+    </div>
     <nav class="editor-switcher" aria-label="选择内容" id="editor-switcher">
       <button type="button" data-edit-tab="profile">个人简介</button>
       <button type="button" data-edit-tab="research">技术研究</button>
@@ -26,9 +35,9 @@
     </nav>
     <div class="edit-form" id="edit-form"></div>
     <div class="editor-actions">
-      <span class="editor-status" id="editor-status">已加载网站内容。</span>
+      <span class="editor-status" id="editor-status" role="status">已加载网页内容。</span>
       <div class="editor-actions-right">
-        <button type="button" class="btn" id="reset-button">放弃草稿并恢复文件内容</button>
+        <button type="button" class="btn" id="reset-button">放弃草稿</button>
         <button type="button" class="btn btn-primary" id="download-button">下载 content.js</button>
       </div>
     </div>
