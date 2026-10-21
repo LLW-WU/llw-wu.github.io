@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Liu Lingwen | AI research, data science and business design — projects, working methods and publications.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Data Science | LIU Lingwen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-data">
+  <a class="visually-hidden" href="#main">Skip to main content</a>
+  <header class="site-nav">
+      <div class="nav-wrap wrap">
+        <a class="site-brand" href="index.html" aria-label="Liu Lingwen, home">
+          <span class="brand-mark">LL</span>
+          <span class="brand-word"><strong>LIU Lingwen</strong><span>Research · Data · Business</span></span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html">Overview</a>
+          <a href="research.html">AI Research</a>
+          <a href="data-science.html" aria-current="page">Data Science</a>
+          <a href="business.html">Business & AI</a>
+          <a href="research.html#publications">Publications</a>
+          <a class="nav-contact" href="mailto:liulingwen@akane.waseda.jp">Get in touch ↗</a>
+        </nav>
+      </div>
+    </header>
+  <main id="main" class="wrap">
+  <section class="hero"><div class="hero-grid">
+    <div><div class="eyebrow">02 / Data Science & Decision Systems</div>
+      <h1>From raw data<br><span class="punch">to a defensible decision.</span></h1><p class="lead">My data-science experience includes <strong>energy-demand, generation and price forecasting</strong> at Goldwind, alongside clinical and neuroimaging data analysis. I am interested in end-to-end analysis: framing a question, testing hypotheses, diagnosing errors and communicating results.</p>
+      <div class="pill-row"><span class="pill">Time-series forecasting</span><span class="pill">Feature engineering</span><span class="pill">Model diagnostics</span><span class="pill">Applied statistics</span></div><div class="cta-row"><a class="btn primary" href="#goldwind">View industry cases <span class="arr" aria-hidden="true">↓</span></a><a class="btn ghost" href="#method">My methodology <span class="arr" aria-hidden="true">↓</span></a></div>
+    </div>
+    <aside class="concept-panel"><div class="micro-heading">KEY CONCEPT / DATA SCIENCE</div><div class="concept-word">Decision-Oriented<br>Analytics</div>
+  <p class="concept-definition">Begin with a decision, not a dataset. Build evidence that changes what someone can reasonably do next.</p>
+  <hr class="soft-divider"><div class="micro-heading">Guiding question</div>
+  <p class="concept-note">Which errors matter to the decision, and how can we distinguish useful signal from a misleading result?</p></aside>
+    </div></section><section class="section" id="method"><div class="section-title-row"><div><div class="section-kicker">Methodology</div><h2 class="section-title">How I structure an analysis</h2><p class="section-intro">A working framework for the end-to-end data-science process; project-specific choices depend on the data and the stakes.</p></div></div><div class="steps"><div class="step"><span class="step-n">01</span><h3>Frame</h3><p>Specify the real decision, prediction horizon and success metric.</p></div><div class="step"><span class="step-n">02</span><h3>Inspect</h3><p>Audit missingness, time coverage, leakage risk and data quality.</p></div><div class="step"><span class="step-n">03</span><h3>Hypothesize</h3><p>Explore patterns, choose plausible features and build a baseline.</p></div><div class="step"><span class="step-n">04</span><h3>Diagnose</h3><p>Check residuals, high-error groups, validation splits and uncertainty.</p></div><div class="step"><span class="step-n">05</span><h3>Translate</h3><p>Explain model limitations and what a user may do with the result.</p></div></div><div class="judgment-bar"><strong>Decision rule</strong><p>High correlation is not sufficient evidence. I want features that improve out-of-sample performance without leakage, and metrics that reflect the cost of mistakes in the use case.</p></div></section><section class="section" id="goldwind"><div class="section-title-row"><div><div class="section-kicker">Industry experience</div><h2 class="section-title">Three energy-forecasting systems at Goldwind</h2><p class="section-intro">Goldwind Science & Technology Co., Ltd. · Data Science Intern · October 2024 – January 2025. Forecast horizons and model families below are preserved from the original homepage.</p></div></div><div class="case-grid three">
+<article class="case-card feature"><div class="card-top"><span class="status published">Industry experience</span><span class="case-label">DEMAND FORECASTING</span></div>
+    <h3>Provincial electricity consumption</h3><p class="case-meta">Forecast horizon: 14 days · hourly</p><p>Predicted hourly electricity consumption over a 14-day horizon for a provincial grid.</p>
+    <div class="case-footer"><strong>Models:</strong> Random Forest + XGBoost</div></article><article class="case-card"><div class="card-top"><span class="status published">Industry experience</span><span class="case-label">GENERATION FORECASTING</span></div>
+    <h3>Campus microgrid generation</h3><p class="case-meta">Forecast horizon: next day</p><p>Predicted next-day electricity generation for a campus microgrid under varying weather conditions.</p>
+    <div class="case-footer"><strong>Models:</strong> XGBoost + Lasso</div></article><article class="case-card"><div class="card-top"><span class="status published">Industry experience</span><span class="case-label">PRICE FORECASTING</span></div>
+    <h3>Regional electricity spot prices</h3><p class="case-meta">Forecast horizon: 14 days</p><p>Predicted electricity spot prices over a 14-day horizon for a regional market.</p>
+    <div class="case-footer"><strong>Model:</strong> Deep MLP (PyTorch)</div></article></div>
+ <div class="context-note"><strong>Portfolio evidence.</strong> The V2 homepage reports that all three models were integrated into an operational pipeline and reached prediction error within 5%. Because the original file does not define the error metric or evaluation protocol, this redesign does not treat that figure as a comparable benchmark across tasks.</div>
+ </section><section class="section"><div class="section-title-row"><div><div class="section-kicker">From model score to decisions</div><h2 class="section-title">What a complete case study should show</h2><p class="section-intro">The following is a proposed presentation structure for the Goldwind work, not a claim that these diagnostics were already completed during the internship.</p></div></div><div class="feature-story">
+  <div><span class="status practice">Case-study expansion plan</span>
+    <h3>Forecasting is not only about lowering error</h3>
+    <p>For an operational forecast, the useful question is often <strong>where the model fails, when it fails, and which downstream choice is affected</strong>. A case study can communicate that better than a single aggregate number.</p>
+    <p>For example, examine whether price-forecast errors concentrate during price spikes, or whether weather changes affect generation forecast stability—provided actual evaluation data supports those analyses.</p>
+  </div>
+  <div class="story-support"><div class="micro-heading">Evidence to include</div><dl>
+    <dt>Problem & baseline</dt><dd>Prediction target, time horizon, naive baseline and train/test timeline.</dd>
+    <dt>Diagnostics</dt><dd>MAE/RMSE or task-appropriate metrics, residual plots, errors across meaningful slices.</dd>
+    <dt>Validation</dt><dd>Time-respecting evaluation, comparisons, leakage checks and robustness.</dd>
+    <dt>Decision relevance</dt><dd>What type of operational action might improve—and what cannot be concluded.</dd>
+  </dl></div>
+</div></section><section class="section"><div class="section-title-row"><div><div class="section-kicker">Other data work</div><h2 class="section-title">Clinical and multimodal data as another domain</h2><p class="section-intro">Data science beyond electricity forecasting: discovering structure in complex measurements and evaluating whether patterns are meaningful.</p></div></div><div class="case-grid"><article class="case-card"><div class="card-top"><span class="status published">Published work</span><span class="case-label">MULTIMODAL ANALYSIS</span></div>
+    <h3>Longitudinal brain imaging and treatment outcomes</h3><p class="case-meta">Science Bulletin (2025)</p><p>With collaborators, investigated distinct neural trajectories in patients with major depressive episodes and their association with treatment response, using interpretable machine-learning analysis.</p>
+    <div class="case-footer"><a href="https://pubmed.ncbi.nlm.nih.gov/41062371/" target="_blank" rel="noopener noreferrer">Read related paper ↗</a></div></article><article class="case-card"><div class="card-top"><span class="status published">Published work</span><span class="case-label">EXPLORATORY ANALYSIS</span></div>
+    <h3>Exploring patient subgroups from multimodal signals</h3><p class="case-meta">Northeastern University (China) · medical collaboration</p><p>Worked with brain functional measures and behavioral patterns in multi-modal research; PCA, t-SNE, and clustering were used to visualize and study group structure. Interpretations require careful external validation.</p>
+    <div class="case-footer"><a href="research.html#research-cases">See the research context →</a></div></article></div></section><section class="section"><div class="section-title-row"><div><div class="section-kicker">Tools and thinking</div><h2 class="section-title">What I look for in a good analysis</h2></div></div><div class="deliverables">
+  <div class="deliverable"><div class="case-label">01 / Data reliability</div><h3>Respect how data was collected</h3><p>For time-series tasks, avoid future-data leakage and assess changes across periods rather than relying on a random split.</p></div>
+  <div class="deliverable"><div class="case-label">02 / Explanation</div><h3>Test mechanisms, not just correlations</h3><p>Ask whether a feature has plausible meaning and incremental predictive value under controlled validation.</p></div>
+  <div class="deliverable"><div class="case-label">03 / Evaluation</div><h3>Find costly failure modes</h3><p>Look beyond averages to outliers, high-stakes cases and systematic patterns that may alter a decision.</p></div>
+</div>
+<p class="context-note">These are methodological priorities for future case write-ups. They are not additional claims about what was implemented in the original internship.</p>
+</section><div class="callout"><div><h3>Research is one path; operational decisions are another.</h3><p>Explore how the same evidence-first approach appears when the goal shifts from evaluating models to understanding product value.</p></div><a class="btn" href="business.html">See Business & AI <span class="arr">→</span></a></div>
+  </main>
+  <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>© 2026 LIU Lingwen · Waseda University</span>
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="mailto:liulingwen@akane.waseda.jp">Email</a>
+          <a href="https://scholar.google.com/citations?user=CKPYcu4AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+          <a href="https://github.com/LLW-WU" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="index.html">Overview</a>
+        </nav>
+      </div>
+    </footer>
+</body>
+</html>
