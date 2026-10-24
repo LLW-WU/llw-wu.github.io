@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LIU Lingwen 的个人主页：技术研究、数据科学和商业设计。">
+  <meta name="description" content="刘令文 · 学术科研、数据科学与商业设计。">
   <meta name="theme-color" content="#ffffff">
-  <title>LIU Lingwen | 个人主页</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="content.js"></script>
-  <script defer src="app.js"></script>
+  <title>刘令文 | 个人主页</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css?v=20261023-details-v12">
+  <script defer src="content.js?v=20261024-education-v18"></script>
+  <script defer src="site-core.js?v=20261023-details-v12"></script>
+  <script defer src="app.js?v=20261024-labels-v16"></script>
 </head>
 <body>
   <a class="skip-link" id="skip-link" href="#main">跳转到正文</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-name" href="#home">LIU Lingwen</a>
       <div class="language-switch" role="group" aria-label="语言 / Language">
         <button type="button" data-lang="zh" aria-pressed="true">中文</button>
         <span aria-hidden="true">/</span>
@@ -22,34 +23,34 @@
       </div>
     </div>
   </header>
-
-  <main class="container" id="main">
-    <section class="intro" id="home" aria-label="关于我">
-      <div class="portrait" id="portrait" aria-hidden="true"><span>LL</span></div>
+  <main class="container cv-layout" id="main">
+    <aside class="intro" id="home" aria-label="关于我">
+      <div class="portrait" id="portrait" hidden></div>
       <div class="intro-copy">
-        <h1 id="profile-name">LIU Lingwen</h1>
+        <h1 id="profile-name">刘令文</h1>
         <p class="affiliation" id="profile-affiliation"></p>
         <p class="bio" id="profile-bio"></p>
-        <p class="profile-links" id="profile-links"></p>
+        <nav class="profile-links" id="profile-links" aria-label="联系方式"></nav>
+        <section class="profile-experience" id="profile-experience" aria-labelledby="experience-label">
+          <h2 class="sidebar-heading" id="experience-label">教育经历</h2>
+          <div id="experience-list"></div>
+        </section>
+        <nav class="page-toc" id="page-toc" aria-labelledby="toc-label"></nav>
       </div>
-    </section>
-
-    <section class="focus" aria-labelledby="focus-heading">
-      <h2 class="section-heading" id="focus-heading">我的方向</h2>
+    </aside>
+    <div class="focus">
       <div class="tabs" role="tablist" aria-label="选择专业方向" id="focus-tabs">
-        <a id="tab-research" class="tab" href="#research" role="tab" aria-controls="panel-research" aria-selected="true">技术研究</a>
-        <a id="tab-data" class="tab" href="#data" role="tab" aria-controls="panel-data" aria-selected="false">数据科学</a>
-        <a id="tab-business" class="tab" href="#business" role="tab" aria-controls="panel-business" aria-selected="false">商业设计</a>
+        <a id="tab-research" class="tab" href="#research" role="tab" aria-controls="panel-research" aria-selected="true">学术科研</a>
+        <a id="tab-data" class="tab" href="#data" role="tab" aria-controls="panel-data" aria-selected="false" tabindex="-1">数据科学</a>
+        <a id="tab-business" class="tab" href="#business" role="tab" aria-controls="panel-business" aria-selected="false" tabindex="-1">商业设计</a>
       </div>
-      <div class="tab-panels" id="tab-panels" aria-live="polite">
-        <p class="loading-note">正在载入内容…</p>
-      </div>
-    </section>
+      <div id="tab-panels"><p class="loading-note">正在载入内容…</p></div>
+      <noscript><p>此主页需要 JavaScript 才能切换语言和显示项目。请在浏览器中启用 JavaScript。</p></noscript>
+    </div>
   </main>
-
   <footer class="container footer">
-    <span id="footer-text">LIU Lingwen · 个人主页</span>
-    <span id="footer-email"></span>
+    <span id="footer-text">刘令文 · 个人主页</span>
+    <a class="editor-entry" id="edit-entry" href="edit.html">编辑内容</a>
   </footer>
 </body>
 </html>

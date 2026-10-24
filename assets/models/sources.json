@@ -1,0 +1,130 @@
+[
+  {
+    "project": "mpi",
+    "asset": "mpi.webp",
+    "pdf": "VesSBI-MPI-BSPC.pdf",
+    "page": 9,
+    "figure": "2",
+    "clip_points": [
+      125,
+      125,
+      463,
+      413
+    ],
+    "render_dpi": 240,
+    "width": 1127,
+    "height": 960
+  },
+  {
+    "project": "braintgl",
+    "asset": "braintgl.webp",
+    "pdf": "BrainTGL- A dynamic graph representation learning model for brain network analysis.pdf",
+    "page": 3,
+    "figure": "2",
+    "clip_points": [
+      36,
+      48,
+      562,
+      217
+    ],
+    "render_dpi": 240,
+    "width": 1753,
+    "height": 563
+  },
+  {
+    "project": "braingsl",
+    "asset": "braingsl.webp",
+    "pdf": "Graph self-supervised learning with application to brain networks analysis.pdf",
+    "page": 4,
+    "figure": "2",
+    "clip_points": [
+      33,
+      46,
+      293,
+      193
+    ],
+    "render_dpi": 240,
+    "width": 867,
+    "height": 490
+  },
+  {
+    "project": "sbdl",
+    "asset": "sbdl.webp",
+    "pdf": "Towards Disease-Aware Self-Supervised Dynamic Brain Network Learning For Mental Diagnosis.pdf",
+    "page": 2,
+    "figure": "2",
+    "clip_points": [
+      125,
+      57,
+      563,
+      251
+    ],
+    "render_dpi": 240,
+    "width": 1460,
+    "height": 647
+  },
+  {
+    "project": "brainhgl",
+    "asset": "brainhgl.webp",
+    "pdf": "Heterogeneous Graph Representation Learning Framework for Resting-State Functional Connectivity Analysis.pdf",
+    "page": 4,
+    "figure": "3",
+    "clip_points": [
+      40,
+      45,
+      570,
+      189
+    ],
+    "render_dpi": 240,
+    "width": 1767,
+    "height": 480
+  },
+  {
+    "project": "trajectories",
+    "asset": "trajectories.webp",
+    "pdf": "Divergent neural trajectories in young patients with major depressive episodes- longitudinal subtypes and their predictive value for treatment outcomes.pdf",
+    "page": 2,
+    "figure": "1",
+    "clip_points": [
+      38,
+      340,
+      554,
+      725
+    ],
+    "render_dpi": 240,
+    "width": 1720,
+    "height": 1283
+  },
+  {
+    "project": "graphtel",
+    "asset": "graphtel.webp",
+    "pdf": "Structure-aware Self-supervised Graph Representation Learning.pdf",
+    "page": 5,
+    "figure": "2",
+    "clip_points": [
+      75,
+      50,
+      365,
+      214
+    ],
+    "render_dpi": 240,
+    "width": 967,
+    "height": 547
+  },
+  {
+    "project": "stdgl",
+    "asset": "stdgl.webp",
+    "pdf": "Capturing temporal node evolution via self-supervised learning A new perspective on dynamic graph learning.pdf",
+    "page": 4,
+    "figure": "2",
+    "clip_points": [
+      45,
+      80,
+      566,
+      284
+    ],
+    "render_dpi": 240,
+    "width": 1737,
+    "height": 680
+  }
+]

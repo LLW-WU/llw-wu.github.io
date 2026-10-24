@@ -1,257 +1,235 @@
-/* Bilingual writing editor. Works offline, saves local drafts, exports content.js. */
+/* Local writing workspace. No credentials, publishing APIs, or remote saves. */
 (() => {
   'use strict';
-  const SOURCE = window.SITE_CONTENT;
-  const form = document.getElementById('edit-form');
-  const status = document.getElementById('editor-status');
-  if (!SOURCE) { form.textContent = '没有找到 content.js，请把它放在 edit.html 同一目录。'; return; }
-  const STORAGE_KEY = 'llw-bilingual-homepage-draft-v1';
-  const clone = value => JSON.parse(JSON.stringify(value));
-  const text = value => typeof value === 'string' ? value : '';
-  const local = (value,lang) => typeof value==='string' ? value : (value?.[lang] ?? '');
-  const tag = (tagName, cls = '', contents) => {
-    const node=document.createElement(tagName);
-    if(cls)node.className=cls;
-    if(contents!==undefined)node.textContent=String(contents);
-    return node;
+  const C=window.SiteCore,form=document.getElementById('edit-form'),status=document.getElementById('editor-status');
+  if(!C||!window.SITE_CONTENT){form.textContent='请把 content.js、site-core.js、editor.js 与 edit.html 放在同一文件夹。';return;}
+  let SOURCE;
+  try{SOURCE=C.normalize(window.SITE_CONTENT);}catch(e){form.textContent=e.message;return;}
+  const clone=x=>JSON.parse(JSON.stringify(x)), E=C.node, T=C.text;
+  const KEY='llw-homepage-draft-doc-v3',stamp=SOURCE.revision;
+  const guides={
+    research:['科研中文正文按最新提供的 AR 文案更新；英文为对应译文，没有补写新的研究结论。','项目先展示模型图、简述和主要结果；原核心观点与正文保留在各自的完整介绍中。','校对提醒（正文仍按提供文案保留）：文案使用 SBDL，前面提供的对应论文使用 SDBD。','校对提醒（正文仍按提供文案保留）：BrainTGL 文案中的 67.8%、73.2%、72.0%，前面讨论中对应的是集成版本 BrainTGL-en。','旧版完整论文表与链接保留；本次没有重新核对所有书目信息。'],
+    data:['第一步把BCGX的流程写下来','第二步撰写下来你在每一步进行的判断过程','第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）','Conceptual key word：'],
+    business:['第一步把早稻田大学讲的课里涉及到的分析流程写下来，一天一个','第二步把AOCR和东京制造业大会的演讲内容，进行what-who-how-value分析，按照分析把它们写在案例中（主要体现对分析流程的理解和广度）']
   };
-  let draft = clone(SOURCE);
-  let active='profile';
-  let lang='zh';
+  const initialSection=new URLSearchParams(location.search).get('section');
+  let draft=clone(SOURCE),notes={research:'',data:'',business:''},active=['research','data','business','publications'].includes(initialSection)?initialSection:'profile',lang='zh';
   try {
-    const saved=localStorage.getItem(STORAGE_KEY);
-    if(saved){
-      const obj=JSON.parse(saved);
-      if(obj.profile && obj.tracks && Array.isArray(obj.publications)) {
-        draft=obj;status.textContent='已恢复这个浏览器里的未发布草稿。';
-      }
-    }
-  } catch (_) { status.textContent='已载入内容；浏览器可能不支持草稿自动保存。'; }
-
-  function persist(){
-    try {localStorage.setItem(STORAGE_KEY,JSON.stringify(draft));}catch(_){ }
-    status.textContent='草稿已修改，尚未发布。';
+    const saved=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(saved?.base===stamp&&saved?.content){draft=C.normalize(saved.content);notes={...notes,...saved.notes};status.textContent='已恢复这个浏览器中的未发布草稿。';}
+  }catch(_){status.textContent='已读取文件；草稿保存不可用时，请及时下载备份。';}
+  function persist() {
+    try{localStorage.setItem(KEY,JSON.stringify({base:stamp,content:draft,notes}));status.textContent='已保存到当前浏览器 · 尚未发布';}
+    catch(_){status.textContent='草稿仅保留在当前页面；请下载文件，避免丢失。';}
   }
-  function assign(path,value){
-    const keys=path.split('.');let ref=draft;
+  function put(path,value) {
+    const keys=path.split('.');let target=draft;
     for(const key of keys.slice(0,-1)) {
-      if(ref == null || ref[key] === undefined) return;
-      ref=ref[key];
+      if(['__proto__','prototype','constructor'].includes(key)||!target||typeof target!=='object')return;
+      target=target[key];
     }
-    if(ref!=null)ref[keys[keys.length-1]]=value;
+    const last=keys.at(-1);if(target && !['__proto__','prototype','constructor'].includes(last))target[last]=value;
   }
-  function field(parent,label,path,value,opts={}){
-    const row=tag('div','field');
-    const id='field_'+path.replace(/[^a-z0-9]/gi,'_');
-    const lab=tag('label','',label);lab.htmlFor=id;
-    const input=tag(opts.multiline?'textarea':'input');
-    if(!opts.multiline)input.type='text';
-    input.id=id;input.value=text(value);input.dataset.path=path;
-    if(opts.rows)input.rows=opts.rows;
+  function field(parent,label,path,value,opts={}) {
+    const row=E('div','field'),id='f-'+path.replace(/[^a-z0-9_-]/gi,'_'),lab=E('label','',label);
+    lab.htmlFor=id;row.append(lab);let input;
+    if(opts.select){input=E('select');for(const [v,label] of opts.select){const option=E('option','',label);option.value=v;input.append(option);}}
+    else {input=E(opts.multiline?'textarea':'input');if(!opts.multiline)input.type='text';if(opts.rows)input.rows=opts.rows;}
+    input.id=id;input.dataset.path=path;input.value=typeof value==='string'?value:'';
     if(opts.placeholder)input.placeholder=opts.placeholder;
-    row.append(lab,input);
-    if(opts.hint)row.append(tag('p','field-hint',opts.hint));
-    parent.append(row);
+    row.append(input);if(opts.hint)row.append(E('p','field-hint',opts.hint));parent.append(row);return input;
   }
-  function section(title,description){
-    form.append(tag('h2','',title));
-    if(description)form.append(tag('p','form-help',description));
+  function lf(parent,label,path,value,opts={}){return field(parent,label,path+'.'+lang,C.local(value,lang,false),opts);}
+  function checkbox(parent,label,path,value){const row=E('label','check-field'),input=E('input');input.type='checkbox';input.dataset.path=path;input.checked=value!==false;row.append(input,E('span','',label));parent.append(row);}
+  function command(parent,label,action,extra={},disabled=false) {
+    const b=E('button','btn'+(action.includes('delete')?' btn-delete':''),label);b.type='button';b.dataset.action=action;
+    Object.assign(b.dataset,extra);b.disabled=disabled;parent.append(b);return b;
   }
-  function languageTip(){
-    const tip=tag('p','edit-language-note',lang==='zh'?'正在填写中文版内容。切换 English 可写对应英文。':'正在填写英文版内容。切换「中文」可写对应中文。');
-    form.append(tip);
+  function heading(title,help){form.append(E('h2','',title));if(help)form.append(E('p','form-help',help));}
+  function writingGuide(key) {
+    const d=E('details','writing-guide');d.append(E('summary','','写作提示与笔记 · 不显示在主页'));
+    const list=E('ol');for(const item of guides[key])list.append(E('li','',item));d.append(list);
+    const textarea=field(d,'我的草稿笔记','_notes.'+key,T(notes[key]),{multiline:true,rows:4,hint:'只保存在当前浏览器；“下载写作笔记”可单独备份。不会导出到 content.js。'});
+    textarea.dataset.noteKey=key;delete textarea.dataset.path;form.append(d);
   }
-  function renderProfile(){
+  function renderProfile() {
+    heading('个人信息','姓名、身份、简介和联系方式。照片继续使用原来的 selfphoto.jpg。');
     const p=draft.profile;
-    section('个人简介','访客第一眼看到的姓名、学校和两三句简介。邮箱、链接和照片是中英文共用的。');
-    languageTip();
-    field(form,'姓名',`profile.name.${lang}`,local(p.name,lang));
-    field(form,'学校 / 身份',`profile.affiliation.${lang}`,local(p.affiliation,lang));
-    field(form,'简短自我介绍',`profile.intro.${lang}`,local(p.intro,lang),{multiline:true,rows:4,hint:'建议 2–3 句，不必把所有经历放在这里。'});
-    form.append(tag('h3','form-subhead','中英文共用的信息'));
-    field(form,'邮箱','profile.email',p.email);
-    field(form,'Google Scholar 网址','profile.scholar',p.scholar);
-    field(form,'GitHub 网址','profile.github',p.github);
-    field(form,'照片文件名','profile.photo',p.photo,{hint:'例如 selfphoto.jpg，放在网站根目录；没有照片则显示 LL。'});
+    lf(form,'姓名','profile.name',p.name);lf(form,'学校 / 身份','profile.affiliation',p.affiliation);
+    lf(form,'简介','profile.intro',p.intro,{multiline:true,rows:3});
+    const details=E('details','form-details');details.append(E('summary','','联系方式与照片（中英文共用）'));
+    for(const [label,key] of [['邮箱','email'],['Google Scholar','scholar'],['GitHub','github'],['照片文件名或网址','photo']])field(details,label,'profile.'+key,p[key]);
+    form.append(details);
   }
-  function projectEditor(key,p,index,total){
-    const root=tag('details','editor-item');
-    root.dataset.projectKey=key;root.dataset.projectIndex=String(index);
-    const title=local(p.title,lang)||local(p.title,lang==='zh'?'en':'zh')||'未命名项目';
-    const untranslated=!local(p.title,lang);
-    root.append(tag('summary','editor-item-title',`${index+1}. ${title}${untranslated?'（本语言待填写）':''}`));
-    const controls=tag('div','editor-item-head');controls.append(tag('span','field-hint','修改 / 调整项目顺序'));
-    const buttons=tag('span');
-    const command=(title,kind,disabled=false)=>{
-      const b=tag('button','btn'+(kind==='delete'?' btn-delete':''),title);
-      b.type='button';b.dataset.action=kind;b.dataset.key=key;b.dataset.index=String(index);b.disabled=disabled;
-      buttons.append(b);
-    };
-    command('↑','up',index===0);command('↓','down',index===total-1);command('删除','delete');
-    controls.append(buttons);root.append(controls);
-    const base=`tracks.${key}.projects.${index}`;
-    field(root,'项目标题',base+`.title.${lang}`,local(p.title,lang));
-    field(root,'一句话说明',base+`.summary.${lang}`,local(p.summary,lang),{multiline:true,rows:2,hint:'让别人快速知道这个项目解决了什么问题。'});
-    field(root,'时间',base+`.year.${lang}`,local(p.year,lang),{placeholder:'例如：2025 年至今'});
-    field(root,'机构 / 项目类型',base+`.context.${lang}`,local(p.context,lang));
-    field(root,'详细说明（网页里默认折叠）',base+`.notes.${lang}`,local(p.notes,lang),{multiline:true,rows:4});
-    const linkArea=tag('details');linkArea.append(tag('summary','','选填：项目网址'));
-    field(linkArea,'网址（中英文共用）',base+'.url',p.url,{placeholder:'https://...'});
-    field(linkArea,'网页上的链接文字',base+`.linkText.${lang}`,local(p.linkText,lang));
-    root.append(linkArea);
-    return root;
+  function groupLabel(g){return [C.local(g.institution,lang),C.local(g.title,lang)].filter(Boolean).join(' / ')||'未命名分组';}
+  function groupEditor(g,index,key) {
+    const item=E('details','editor-item');item.dataset.editorId='group-'+g.id;
+    item.append(E('summary','editor-item-title',groupLabel(g)));
+    const path='tracks.'+key+'.groups.'+index;
+    lf(item,'学校 / 机构',path+'.institution',g.institution);
+    lf(item,'时间范围',path+'.period',g.period);
+    lf(item,'简短标题（选填）',path+'.focus',g.focus,{hint:'未填写研究方向标题时，使用这个标题。'});
+    lf(item,'研究方向标题（选填）',path+'.title',g.title);
+    lf(item,'方向介绍（选填）',path+'.description',g.description,{multiline:true,rows:4});
+    const bar=E('div','item-tools');
+    command(bar,'上移分组','group-up',{key,index:String(index)},index===0);
+    command(bar,'下移分组','group-down',{key,index:String(index)},index===draft.tracks[key].groups.length-1);
+    command(bar,'删除分组','group-delete',{key,index:String(index)});item.append(bar);return item;
   }
-  function renderDirection(key){
-    const t=draft.tracks[key];
-    const sectionNames={research:'技术研究',data:'数据科学',business:'商业设计'};
-    section(sectionNames[key],'保持直接：一句话说明、一个 Key Concept、4 步工作流程，以及能够证明这些方法的项目。');
-    languageTip();
-    field(form,'方向标签（切换栏）',`tracks.${key}.label.${lang}`,local(t.label,lang));
-    field(form,'方向标题',`tracks.${key}.title.${lang}`,local(t.title,lang));
-    field(form,'一句话介绍',`tracks.${key}.summary.${lang}`,local(t.summary,lang),{multiline:true,rows:2});
-    field(form,'Key Concept',`tracks.${key}.concept.${lang}`,local(t.concept,lang),{hint:'建议一个简短词组。中文、英文可以自由表达，不必逐字翻译。'});
-    field(form,'基本工作流程',`tracks.${key}.steps.${lang}`,(t.steps?.[lang]||[]).join('\n'),{multiline:true,rows:5,hint:'每行一个步骤，网站会自动用 → 串起来。'});
-    form.append(tag('h3','form-subhead','项目 / 课程实例'));
-    form.append(tag('p','form-help','对外主页只先显示前 3 条；其他项目被收起。点击下面的标题展开编辑，支持增删和上下移动。'));
-    (t.projects||[]).forEach((p,i)=>form.append(projectEditor(key,p,i,t.projects.length)));
-    const add=tag('button','btn','＋ 新增项目');add.type='button';add.dataset.action='add';add.dataset.key=key;
-    form.append(add);
+  function projectEditor(p,index,key) {
+    const item=E('details','editor-item');item.dataset.editorId=p.id;
+    const title=C.local(p.shortTitle,lang)||C.local(p.title,lang)||'未命名项目';
+    item.append(E('summary','editor-item-title',title+(p.visible?'':'（未公开）')));
+    const path='tracks.'+key+'.projects.'+index;
+    checkbox(item,'在主页显示这个项目',path+'.visible',p.visible);
+    if(key==='research'){
+      const display=E('details','form-details');display.append(E('summary','','项目展示与模型图'));
+      lf(display,'主页项目名称',path+'.shortTitle',p.shortTitle,{hint:'用于项目标题和左侧目录。'});
+      lf(display,'模型名称（选填）',path+'.modelName',p.modelName);
+      lf(display,'项目简述',path+'.brief',p.brief,{multiline:true,rows:2});
+      lf(display,'主要结果（有依据时填写）',path+'.result',p.result,{multiline:true,rows:2});
+      field(display,'模型图文件路径或网址',path+'.modelImage',p.modelImage);
+      lf(display,'模型图说明',path+'.modelCaption',p.modelCaption);
+      field(display,'图片来源（论文、图号和页码）',path+'.modelSource',p.modelSource);item.append(display);
+      const personal=E('section','personal-fields');personal.append(E('h3','form-subhead','我的角色与工作'));
+      lf(personal,'我的角色',path+'.role',p.role,{placeholder:'待你填写'});
+      lf(personal,'我的具体工作',path+'.contribution',p.contribution,{multiline:true,rows:4,placeholder:'待你填写',hint:'留空时，主页保留待填写区域；可分别填写中文和英文。'});
+      field(personal,'关联发表论文',path+'.publicationId',p.publicationId,{select:[['','按论文网址自动匹配'],...draft.publications.map(paper=>[paper.id,C.local(paper.title,lang)||paper.id])]});item.append(personal);
+    }
+    lf(item,'核心观点（正文为空时展示）',path+'.takeaway',p.takeaway,{multiline:true,rows:3});
+    lf(item,'原始项目名称',path+'.title',p.title);
+    const groups=draft.tracks[key].groups;
+    if(groups.length)field(item,'所属学校 / 研究方向',path+'.group',p.group,{select:[['','不分组'],...groups.map(g=>[g.id,groupLabel(g)])]});
+    lf(item,'正文',path+'.summary',p.summary,{multiline:true,rows:9,hint:'用 **这段文字** 加粗，空一行可分段。完整正文保存在每个项目的“完整介绍”中。',placeholder:'写清楚：问题是什么、做了什么、最后发现了什么。'});
+    const meta=E('details','form-details');meta.append(E('summary','','时间、出处与链接'));
+    lf(meta,'时间',path+'.year',p.year);lf(meta,'期刊 / 会议 / 项目背景',path+'.context',p.context);
+    field(meta,'论文 / 项目链接（中英文共用）',path+'.url',p.url,{placeholder:'https://...'});
+    lf(meta,'链接文字',path+'.linkText',p.linkText);
+    lf(meta,'完整论文题名（选填，资料留存）',path+'.paperTitle',p.paperTitle,{multiline:true,rows:2,hint:'正式引用在“论文列表”中编辑，主页通过论文编号跳转查看。'});
+    lf(meta,'补充说明（主页折叠显示）',path+'.notes',p.notes,{multiline:true,rows:3});item.append(meta);
+    const siblings=draft.tracks[key].projects.map((x,i)=>({x,i})).filter(o=>o.x.group===p.group),pos=siblings.findIndex(o=>o.i===index);
+    const bar=E('div','item-tools');command(bar,'上移','project-up',{key,index:String(index)},pos===0);command(bar,'下移','project-down',{key,index:String(index)},pos===siblings.length-1);command(bar,'删除项目','project-delete',{key,index:String(index)});item.append(bar);
+    return item;
   }
-  function paperEditor(p,index){
-    const item=tag('details','editor-item');
-    const headline=local(p.title,lang)||p.title?.en||'未命名论文';
-    item.append(tag('summary','editor-item-title',`${index+1}. ${headline}`));
-    const base=`publications.${index}`;
-    field(item,lang==='zh'?'中文译名（正式英文标题不变）':'正式英文标题',base+`.title.${lang}`,local(p.title,lang),{hint:lang==='zh'?'建议自己确认译名准确；英文原题会在中文版的小字中保留。':'请保留论文发表时的正式英文名称。'});
-    if(lang==='zh')item.append(tag('p','paper-original-hint','原文：'+text(p.title?.en)));
-    field(item,'作者（共用）',base+'.authors',p.authors,{multiline:true,rows:2});
-    field(item,'期刊 / 会议官方名称（共用）',base+'.venue',p.venue,{multiline:true,rows:2});
-    field(item,'年份（共用）',base+'.year',p.year);
-    field(item,'论文链接（共用）',base+'.url',p.url);
-    const del=tag('button','btn btn-delete','删除此论文');del.type='button';del.dataset.action='remove-pub';del.dataset.index=String(index);
-    item.append(del);return item;
+  function renderTrack(key) {
+    const t=draft.tracks[key],names={research:'学术科研',data:'数据科学',business:'商业设计'};
+    heading(names[key],lang==='zh'?'正在编辑中文正文。切换 English 可单独修改英文译文。':'正在编辑英文正文。修改后不会自动改写中文。');
+    writingGuide(key);
+    lf(form,key==='research'?'研究宗旨 / Research focus':'Key idea / Conceptual key word','tracks.'+key+'.concept',t.concept,{placeholder:key==='research'?'':'留空，待你自己确定'});
+    lf(form,'一句话说明','tracks.'+key+'.statement',t.statement,{multiline:true,rows:2});
+    lf(form,'方向介绍','tracks.'+key+'.summary',t.summary,{multiline:true,rows:3});
+    if(key==='research')field(form,'研究能力（每行一项）','tracks.'+key+'.strengths.'+lang,(t.strengths[lang]||[]).join('\n'),{multiline:true,rows:4,hint:'在首页显示，可用 **文字** 突出能力名称。'});
+    if(key!=='research')field(form,'工作流程（每行一步）','tracks.'+key+'.steps.'+lang,(t.steps[lang]||[]).join('\n'),{multiline:true,rows:5,hint:'按实际课程或练习填写；目前没有代填 BCGX 或商业课程流程。'});
+    const settings=E('details','form-details');settings.append(E('summary','','栏目名称与分组设置'));
+    lf(settings,'导航栏名称','tracks.'+key+'.label',t.label);lf(settings,'栏目标题','tracks.'+key+'.title',t.title);
+    lf(settings,'还没有公开项目时显示的文字','tracks.'+key+'.emptyMessage',t.emptyMessage);
+    settings.append(E('p','field-hint','相邻分组的学校与时间完全相同时，会合并显示一个学校标题。'));
+    t.groups.forEach((g,i)=>settings.append(groupEditor(g,i,key)));command(settings,'＋ 新增学校 / 方向','group-add',{key});form.append(settings);
+    form.append(E('h3','form-subhead',key==='research'?'项目正文':'案例'));
+    if(!t.projects.length)form.append(E('p','form-help','还没有案例。点击下方按钮新增，不会自动填入任何成果。'));
+    t.projects.forEach((p,i)=>form.append(projectEditor(p,i,key)));
+    command(form,key==='research'?'＋ 新增项目':'＋ 新增案例','project-add',{key});
   }
-  function renderPapers(){
-    section('论文列表','已导入的正式论文题名、作者、发表场所和链接会完整保留。中文版可另填译名，不替换原始英文题名。');
-    languageTip();
-    draft.publications.forEach((p,i)=>form.append(paperEditor(p,i)));
-    const add=tag('button','btn','＋ 新增论文');add.type='button';add.dataset.action='add-pub';form.append(add);
+  function renderPapers() {
+    heading('论文列表','完整论文表在科研页底部直接按引用格式展示：作者、原文题名、期刊或会议、年份。题名链接到论文页面。');
+    draft.publications.forEach((p,i)=>{
+      const item=E('details','editor-item');item.dataset.editorId=p.id;
+      item.append(E('summary','editor-item-title',C.local(p.title,lang)||'未命名论文'));
+      const path='publications.'+i;
+      checkbox(item,'在主页显示',path+'.visible',p.visible);
+      lf(item,lang==='zh'?'中文题名':'英文题名',path+'.title',p.title,{multiline:true,rows:2});
+      field(item,'作者',path+'.authors',p.authors,{multiline:true,rows:2});field(item,'期刊 / 会议',path+'.venue',p.venue);
+      field(item,'年份',path+'.year',p.year);field(item,'论文链接',path+'.url',p.url);
+      command(item,'删除论文','paper-delete',{index:String(i)});form.append(item);
+    });command(form,'＋ 新增论文','paper-add');
   }
-  function render(){
+  function render(openId='') {
     form.replaceChildren();
-    document.querySelectorAll('[data-edit-tab]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.editTab===active)));
-    document.querySelectorAll('[data-content-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.contentLang===lang)));
-    if(active==='profile')renderProfile();else if(active==='publications')renderPapers();else renderDirection(active);
+    for(const b of document.querySelectorAll('[data-edit-tab]'))b.setAttribute('aria-pressed',String(b.dataset.editTab===active));
+    for(const b of document.querySelectorAll('[data-content-lang]'))b.setAttribute('aria-pressed',String(b.dataset.contentLang===lang));
+    if(active==='profile')renderProfile();else if(active==='publications')renderPapers();else renderTrack(active);
+    if(openId){for(const item of form.querySelectorAll('[data-editor-id]'))if(item.dataset.editorId===openId){item.open=true;const parent=item.parentElement.closest('details');if(parent)parent.open=true;item.querySelector('input[type=text],textarea')?.focus();}}
   }
-  document.getElementById('editor-switcher').addEventListener('click',event=>{
-    const b=event.target.closest('[data-edit-tab]');if(!b)return;
-    active=b.dataset.editTab;render();
+  document.getElementById('editor-switcher').addEventListener('click',e=>{const b=e.target.closest('[data-edit-tab]');if(!b)return;active=b.dataset.editTab;render();});
+  for(const b of document.querySelectorAll('[data-content-lang]'))b.addEventListener('click',()=>{
+    const open=[...form.querySelectorAll('.editor-item[open][data-editor-id]')].map(x=>x.dataset.editorId);lang=b.dataset.contentLang;render();
+    for(const item of form.querySelectorAll('[data-editor-id]'))if(open.includes(item.dataset.editorId))item.open=true;
   });
-  document.querySelectorAll('[data-content-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.contentLang;render();}));
-  form.addEventListener('input',event=>{
-    const input=event.target;if(!input?.dataset?.path)return;
-    const path=input.dataset.path;
-    const value=path.includes('.steps.')?input.value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean):input.value;
-    assign(path,value);persist();
-  });
+  function inputHandler(event) {
+    const input=event.target;if(input.dataset.noteKey){notes[input.dataset.noteKey]=input.value;persist();return;}
+    const path=input.dataset.path;if(!path)return;
+    let value=input.type==='checkbox'?input.checked:input.value;
+    if(path.includes('.steps.')||path.includes('.strengths.'))value=input.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    put(path,value);persist();
+    if(path.includes('.title.')) {
+      const details=input.closest('.editor-item');if(details){const title=value||'未命名';details.querySelector(':scope > summary').textContent=title;}
+    }
+  }
+  form.addEventListener('input',inputHandler);form.addEventListener('change',e=>{if(e.target.tagName==='SELECT')inputHandler(e);});
+  const uid=prefix=>prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6);
+  const blank=()=>({zh:'',en:''});
   form.addEventListener('click',event=>{
     const b=event.target.closest('button[data-action]');if(!b)return;
-    const kind=b.dataset.action,index=Number(b.dataset.index),key=b.dataset.key;
-    if(kind==='add')draft.tracks[key].projects.push({
-      title:{zh:'',en:''},year:{zh:'',en:''},context:{zh:'',en:''},summary:{zh:'',en:''},
-      notes:{zh:'',en:''},url:'',linkText:{zh:'',en:''}
-    });
-    if(kind==='delete'){
-      if(!confirm('确定删除整个项目吗？中文与英文内容都会一起删除。'))return;
-      draft.tracks[key].projects.splice(index,1);
+    const {action,key}=b.dataset,index=Number(b.dataset.index);let open='';
+    if(action==='project-add') {
+      const id=uid('project');draft.tracks[key].projects.push({id,visible:false,featured:false,group:draft.tracks[key].groups[0]?.id||'',title:blank(),shortTitle:blank(),brief:blank(),result:blank(),takeaway:blank(),summary:blank(),context:blank(),year:blank(),notes:blank(),linkText:{zh:'相关链接 ↗',en:'Read more ↗'},paperTitle:blank(),modelImage:'',modelSource:'',modelCaption:blank(),url:''});open=id;
+    } else if(action==='project-delete') {
+      if(!confirm('删除这个项目及其中英文内容？'))return;draft.tracks[key].projects.splice(index,1);
+    } else if(action==='project-up'||action==='project-down') {
+      const list=draft.tracks[key].projects,siblings=list.map((p,i)=>i).filter(i=>list[i].group===list[index].group);
+      const next=siblings[siblings.indexOf(index)+(action==='project-up'?-1:1)];if(next===undefined)return;
+      open=list[index].id;[list[index],list[next]]=[list[next],list[index]];
+    } else if(action==='group-add') {
+      const id=uid('group');draft.tracks[key].groups.push({id,institution:blank(),period:blank(),title:blank(),description:blank(),focus:blank(),connection:blank()});open='group-'+id;
+    } else if(action==='group-delete') {
+      const groups=draft.tracks[key].groups,id=groups[index].id;
+      if(!confirm('删除这个分组？其中的项目会保留，移到“其他项目”。'))return;
+      for(const p of draft.tracks[key].projects)if(p.group===id)p.group='';groups.splice(index,1);
+    } else if(action==='group-up'||action==='group-down') {
+      const groups=draft.tracks[key].groups,j=index+(action==='group-up'?-1:1);if(j<0||j>=groups.length)return;open='group-'+groups[index].id;[groups[index],groups[j]]=[groups[j],groups[index]];
+    } else if(action==='paper-add') {
+      const id=uid('pub');draft.publications.push({id,visible:false,title:blank(),authors:'',venue:'',year:'',url:''});open=id;
+    } else if(action==='paper-delete') {
+      if(!confirm('删除这篇论文及其中英文内容？'))return;draft.publications.splice(index,1);
     }
-    if(kind==='up' && index>0){
-      const list=draft.tracks[key].projects;[list[index-1],list[index]]=[list[index],list[index-1]];
-    }
-    if(kind==='down'){
-      const list=draft.tracks[key].projects;if(index<list.length-1)[list[index],list[index+1]]=[list[index+1],list[index]];
-    }
-    if(kind==='add-pub')draft.publications.push({title:{zh:'',en:''},authors:'',venue:'',year:'',url:''});
-    if(kind==='remove-pub'){
-      if(!confirm('确定删除这篇论文的中英文内容吗？'))return;
-      draft.publications.splice(index,1);
-    }
-    persist();render();
-    if(kind==='add'){
-      const idx=draft.tracks[key].projects.length-1;
-      const details=form.querySelector(`details[data-project-key="${key}"][data-project-index="${idx}"]`);
-      if(details){details.open=true;details.querySelector('input')?.focus();}
-    }
+    persist();render(open);
   });
-
-  // Import new bilingual content.js or an earlier English-only content.js. Never execute uploaded JavaScript.
-  function localizedField(value,template){
-    if(value && typeof value==='object' && !Array.isArray(value)) return {zh:text(value.zh),en:text(value.en)};
-    const english=text(value);
-    return {zh:english===text(template?.en)?text(template?.zh):'',en:english};
+  function download(filename,value,type) {
+    const url=URL.createObjectURL(new Blob([value],{type})),a=E('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
-  function importedContent(raw){
-    if(!raw || typeof raw !== 'object' || !raw.profile || !raw.tracks || !Array.isArray(raw.publications))throw new Error('内容结构不正确。');
-    const migrated=clone(SOURCE);
-    for(const name of ['name','affiliation','intro']){
-      migrated.profile[name]=localizedField(raw.profile[name],SOURCE.profile[name]);
-    }
-    for(const name of ['photo','email','scholar','github'])migrated.profile[name]=text(raw.profile[name]);
-    for(const trackId of ['research','data','business']){
-      const orig=raw.tracks[trackId];if(!orig)continue;
-      const base=SOURCE.tracks[trackId],t=migrated.tracks[trackId];
-      for(const key of ['label','title','concept','summary'])t[key]=localizedField(orig[key],base[key]);
-      if(Array.isArray(orig.steps)){
-        const defaultEN=JSON.stringify(base.steps.en);
-        t.steps={zh:JSON.stringify(orig.steps)===defaultEN?clone(base.steps.zh):[],en:orig.steps.map(text)};
-      }else if(orig.steps && typeof orig.steps==='object'){
-        t.steps={zh:Array.isArray(orig.steps.zh)?orig.steps.zh.map(text):[],en:Array.isArray(orig.steps.en)?orig.steps.en.map(text):[]};
-      }
-      t.projects=Array.isArray(orig.projects)?orig.projects.map((p,i)=>{
-        const baseProject=base.projects.find(x=>local(x.title,'en')===local(p.title,'en')) || base.projects[i] || {};
-        const project={};
-        for(const field of ['title','year','context','summary','notes','linkText']){
-          const template = baseProject[field]||{zh:'',en:''};
-          project[field]=localizedField(p[field],template);
-        }
-        project.url=text(p.url);return project;
-      }):[];
-    }
-    migrated.publications=raw.publications.map((p,i)=>{
-      const base=SOURCE.publications.find(x=>x.url && x.url===p.url)||SOURCE.publications[i]||{};
-      return {title:localizedField(p.title,base.title||{zh:'',en:''}),
-        authors:text(p.authors),venue:text(p.venue),year:text(p.year),url:text(p.url)};
-    });
-    return migrated;
-  }
-  function parseFile(contents){
-    const anchor='window.SITE_CONTENT';const pos=contents.indexOf(anchor);
-    const source=pos>=0?contents.slice(pos+anchor.length):contents;
-    const start=source.indexOf('{');const end=source.lastIndexOf('}');
-    if(start<0 || end<start)throw new Error('没有找到 JSON 格式的 SITE_CONTENT。');
-    return JSON.parse(source.slice(start,end+1));
-  }
-  document.getElementById('import-button').addEventListener('click',()=>document.getElementById('import-file').click());
-  document.getElementById('import-file').addEventListener('change',async event=>{
-    const file=event.target.files?.[0];if(!file)return;
-    try{
-      const imported=importedContent(parseFile(await file.text()));
-      if(!confirm('用导入文件替换当前编辑草稿？请先下载现有草稿以免丢失。'))return;
-      draft=imported;persist();status.textContent='导入成功。请检查中英文栏目的文字，然后下载 content.js。';render();
-    }catch(error){status.textContent='导入失败：'+error.message;}
-    finally{event.target.value='';}
-  });
   document.getElementById('download-button').addEventListener('click',()=>{
-    const source='/* Bilingual site content: edit using edit.html */\nwindow.SITE_CONTENT = '+JSON.stringify(draft,null,2)+';\n';
-    const blob=new Blob([source],{type:'text/javascript;charset=utf-8'});
-    const url=URL.createObjectURL(blob);const a=tag('a');a.href=url;a.download='content.js';document.body.append(a);a.click();a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-    status.textContent='已下载 content.js。替换仓库同名文件并提交，网站才会更新。';
+    download('content.js',C.serialize(draft),'text/javascript;charset=utf-8');status.textContent='已下载 content.js；替换网站同名文件并提交后才会发布。';
+  });
+  document.getElementById('import-button').addEventListener('click',()=>document.getElementById('import-file').click());
+  document.getElementById('import-file').addEventListener('change',async e=>{
+    const file=e.target.files?.[0];if(!file)return;
+    try {
+      if(file.size>10*1024*1024)throw new Error('文件超过 10 MB，请确认这是文字内容文件。');
+      const incoming=C.parse(await file.text());
+      if(!confirm('导入会替换当前全部正文（含中英文）。请先下载现有草稿备份。继续吗？'))return;
+      draft=incoming;persist();render();status.textContent='导入成功；请核对分组和两种语言，再下载发布。';
+    }catch(err){status.textContent='未导入：'+err.message;}finally{e.target.value='';}
   });
   document.getElementById('reset-button').addEventListener('click',()=>{
-    if(!confirm('确定放弃当前草稿，恢复当前目录里的 content.js 吗？'))return;
-    draft=clone(SOURCE);try{localStorage.removeItem(STORAGE_KEY);}catch(_){ }
-    status.textContent='已恢复文件内容。';render();
+    if(!confirm('放弃当前公开内容草稿，重新读取目录里的 content.js？写作笔记会保留。'))return;
+    draft=clone(SOURCE);persist();render();status.textContent='已恢复目录里的 content.js；写作笔记仍保留。';
   });
+  document.getElementById('notes-button').addEventListener('click',()=>{
+    const names={research:'AI Research',data:'Data Scientist',business:'Business Design'};
+    let out='# 主页写作笔记\n\n这不是网站公开内容文件。\n';
+    for(const key of Object.keys(names))out+='\n## '+names[key]+'\n\n'+guides[key].map(x=>'- '+x).join('\n')+'\n\n'+T(notes[key])+'\n';
+    download('writing-notes.md',out,'text/markdown;charset=utf-8');
+  });
+  const dialog=document.getElementById('preview-dialog'),frame=document.getElementById('preview-frame');
+  function sendPreview(){frame.contentWindow?.postMessage({type:'llw-preview-content',content:draft,lang,track:['research','data','business'].includes(active)?active:'research'},'*');}
+  document.getElementById('preview-button').addEventListener('click',()=>{
+    dialog.showModal();
+    if(!window.LLW_PREVIEW_TEMPLATE){status.textContent='缺少 preview-template.js，请把它放到同一目录。';dialog.close();return;}
+    frame.srcdoc=window.LLW_PREVIEW_TEMPLATE.replace('/*LLW-DATA*/','window.EDITOR_PREVIEW=true;window.PREVIEW_LANG='+JSON.stringify(lang)+';\n'+C.serialize(draft));
+  });
+  document.getElementById('close-preview').addEventListener('click',()=>dialog.close());
+  frame.addEventListener('load',sendPreview);
+  window.addEventListener('message',e=>{if(e.source===frame.contentWindow&&e.data?.type==='llw-preview-ready')sendPreview();});
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
   render();
 })();
