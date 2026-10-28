@@ -39,7 +39,7 @@
     for(const id of ['research','data','business']) {
       const t=raw.tracks[id]||{}, out={};
       for(const k of ['label','title','concept','statement','summary','emptyMessage'])out[k]=bi(t[k]);
-      if(!out.label.zh&&!out.label.en)out.label={zh:{research:'学术科研',data:'数据科学',business:'商业设计'}[id],en:{research:'AI Research',data:'Data Scientist',business:'Business Design'}[id]};
+      if(!out.label.zh&&!out.label.en)out.label={zh:{research:'学术科研',data:'数据分析',business:'商业设计'}[id],en:{research:'AI Research',data:'Data Science',business:'Business Design'}[id]};
       for(const field of ['steps','strengths']) {
         out[field]={zh:[],en:[]};
         for(const lang of ['zh','en']) {

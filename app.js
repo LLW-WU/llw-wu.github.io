@@ -14,8 +14,24 @@
   const requested=window.PREVIEW_LANG || new URLSearchParams(location.search).get('lang');
   if(['en','zh'].includes(requested))lang=requested;
   else if(!preview){try{if(localStorage.getItem('llw-site-language')==='en')lang='en';}catch(_) {}}
-  let active=ids.includes(location.hash.slice(1))?location.hash.slice(1):'research';
+  function trackForHash(hash,fallback){
+    if(ids.includes(hash))return hash;
+    if(/^data-(approach|strengths|projects)$/.test(hash)||/^(project|group|institution|overview)-ds-/.test(hash))return 'data';
+    if(['key-idea','research-strengths','research-projects'].includes(hash)||/^(project|group|institution)-/.test(hash))return 'research';
+    return fallback;
+  }
+  let active=trackForHash(location.hash.slice(1),'research');
   const L=v=>C.local(v,lang), E=C.node;
+  function trackSections(){
+    const ds=active==='data';
+    return {
+      idea:ds?'data-approach':'key-idea',
+      strengths:ds?'data-strengths':'research-strengths',
+      projects:ds?'data-projects':'research-projects',
+      core:ds?(lang==='zh'?'分析思路':'Approach'):strings[lang].core,
+      strengthsLabel:ds?(lang==='zh'?'分析能力':'Analytical skills'):(lang==='zh'?'研究能力':'Research strengths')
+    };
+  }
 
   // Keep an older cached HTML shell usable while the static files are updated.
   document.getElementById('main').classList.add('cv-layout');
@@ -96,13 +112,13 @@
   function project(p,headingTag='h4') {
     const article=E('article','selected-project project-entry');article.id='project-'+p.id;
     const head=E('div','selected-heading'),title=E(headingTag,'selected-title',L(p.shortTitle)||L(p.title));
-    if(active==='research'){
+    if(active==='research'||(active==='data'&&p.publicationId)){
       const papers=data.publications.filter(p=>p.visible&&L(p.title));
       const index=papers.findIndex(paper=>p.publicationId?paper.id===p.publicationId:!!p.url&&paper.url===p.url);
       if(index>=0){
         const reference=E('a','project-citation','['+(index+1)+']');reference.href='#publication-'+papers[index].id;
         reference.setAttribute('aria-label',(lang==='zh'?'查看论文引用 ':'View reference ')+(index+1));title.append(reference);
-      }else title.append(E('span','reference-pending',lang==='zh'?'引用待补充':'Reference pending'));
+      }else if(active==='research')title.append(E('span','reference-pending',lang==='zh'?'引用待补充':'Reference pending'));
     }
     head.append(title);const meta=E('div','selected-meta');
     if(L(p.modelName))meta.append(E('span','project-model',L(p.modelName)));
@@ -122,7 +138,7 @@
     if(L(p.result))copy.append(C.paragraph(L(p.result),'selected-result'));
     article.prepend(copy);
     let contribution=null;
-    if(active==='research'){
+    if(active==='research'||active==='data'){
       const role=L(p.role),work=L(p.contribution);contribution=E('section','project-contribution'+(!role&&!work?' is-placeholder':''));
       const heading=E('div','contribution-heading');heading.append(E(headingTag==='h5'?'h6':'h5','contribution-label',lang==='zh'?'我的角色与工作':'My role and contributions'));
       if(!role&&!work)heading.append(E('span','contribution-status',lang==='zh'?'待填写':'To be added'));contribution.append(heading);
@@ -137,16 +153,17 @@
     details.append(full);article.append(details);if(contribution)article.append(contribution);return article;
   }
   function researchOverview(intro,t) {
+    const sections=trackSections();
     intro.classList.add('research-overview');
-    const idea=E('section','idea-panel');idea.id='key-idea';idea.setAttribute('aria-labelledby','key-idea-label');
-    const label=E('h2','cv-section-label',strings[lang].core);label.id='key-idea-label';idea.append(label);
-    const title=E('h3','concept-title',L(t.concept));title.id='research-idea-title';idea.append(title);
+    const idea=E('section','idea-panel');idea.id=sections.idea;idea.setAttribute('aria-labelledby',sections.idea+'-label');
+    const label=E('h2','cv-section-label',sections.core);label.id=sections.idea+'-label';idea.append(label);
+    const title=E('h3','concept-title',L(t.concept));title.id=active==='data'?'data-idea-title':'research-idea-title';idea.append(title);
     if(L(t.statement))idea.append(C.paragraph(L(t.statement),'concept-statement'));
     intro.append(idea);
     const strengths=t.strengths?.[lang]||[];
     if(strengths.length){
-      const abilities=E('section','research-strengths');abilities.id='research-strengths';abilities.setAttribute('aria-labelledby','strengths-label');
-      const label=E('h2','cv-section-label',lang==='zh'?'研究能力':'Research strengths');label.id='strengths-label';abilities.append(label);
+      const abilities=E('section','research-strengths');abilities.id=sections.strengths;abilities.setAttribute('aria-labelledby','strengths-label');
+      const label=E('h2','cv-section-label',sections.strengthsLabel);label.id='strengths-label';abilities.append(label);
       const list=E('ul','capability-list');
       strengths.forEach((strength,i)=>{
         const item=E('li'),icon=E('img','capability-icon');icon.alt='';icon.src='assets/ability-'+['structure','method','analysis'][Math.min(i,2)]+'-slate.svg';
@@ -158,7 +175,7 @@
     }else if(L(t.summary))idea.append(C.paragraph(L(t.summary),'concept-description'));
   }
   function researchLines(panel,groups,projects) {
-    const works=E('section','research-projects'),used=new Set();works.id='research-projects';works.setAttribute('aria-labelledby','projects-label');
+    const works=E('section','research-projects'),used=new Set();works.id=trackSections().projects;works.setAttribute('aria-labelledby','projects-label');
     const label=E('h2','cv-section-label',lang==='zh'?'项目':'Projects');label.id='projects-label';works.append(label);
     let lastInstitution='',institution=null;
     for(const g of groups){
@@ -197,23 +214,24 @@
     return section;
   }
   function contents() {
-    const nav=document.getElementById('page-toc');nav.replaceChildren();tocTargets=[];nav.hidden=active!=='research';if(nav.hidden)return;
+    const nav=document.getElementById('page-toc');nav.replaceChildren();tocTargets=[];nav.hidden=!['research','data'].includes(active);if(nav.hidden)return;
+    const t=data.tracks[active],sections=trackSections();
     const heading=E('h2','sidebar-heading',lang==='zh'?'目录':'Contents');heading.id='toc-label';nav.append(heading);
     const list=E('ul','toc-list');nav.append(list);
     function entry(parent,id,text,kind=''){
       if(!document.getElementById(id))return null;
       const item=E('li',kind),link=E('a','toc-link',text);link.href='#'+id;link.dataset.tocTarget=id;link.title=text;item.append(link);parent.append(item);tocTargets.push({link,target:document.getElementById(id)});return item;
     }
-    entry(list,'key-idea',strings[lang].core);entry(list,'research-strengths',lang==='zh'?'研究能力':'Research strengths');
-    const projects=entry(list,'research-projects',lang==='zh'?'项目':'Projects');
+    entry(list,sections.idea,sections.core);entry(list,sections.strengths,sections.strengthsLabel);
+    const projects=entry(list,sections.projects,lang==='zh'?'项目':'Projects');
     if(projects){
       const children=E('ul','toc-projects');projects.append(children);let lastSchool='';
-      for(const group of data.tracks.research.groups){
-        const items=data.tracks.research.projects.filter(p=>p.visible&&p.group===group.id&&L(p.title));if(!items.length)continue;
+      for(const group of t.groups){
+        const items=t.projects.filter(p=>p.visible&&p.group===group.id&&L(p.title));if(!items.length)continue;
         const school=L(group.institution);if(school&&school!==lastSchool){children.append(E('li','toc-school',school));lastSchool=school;}
         for(const p of items)entry(children,'project-'+p.id,L(p.shortTitle)||L(p.title),'toc-project');
       }
-      for(const p of data.tracks.research.projects.filter(p=>p.visible&&L(p.title)&&!data.tracks.research.groups.some(g=>g.id===p.group)))entry(children,'project-'+p.id,L(p.shortTitle)||L(p.title),'toc-project');
+      for(const p of t.projects.filter(p=>p.visible&&L(p.title)&&!t.groups.some(g=>g.id===p.group)))entry(children,'project-'+p.id,L(p.shortTitle)||L(p.title),'toc-project');
     }
     entry(list,'all-publications',lang==='zh'?'全部发表论文':'All publications');updateContents();
   }
@@ -231,7 +249,7 @@
     const concept=L(t.concept),statement=L(t.statement),summary=L(t.summary);
     const projects=t.projects.filter(p=>p.visible&&L(p.title));
     const groups=t.groups.filter(g=>projects.some(p=>p.group===g.id)||L(g.description));
-    const structured=active==='research'&&!!concept;
+    const structured=['research','data'].includes(active)&&!!concept;
     const intro=E('section','research-intro');
     if(structured)researchOverview(intro,t);
     else if(concept){
@@ -263,7 +281,7 @@
     const ungrouped=projects.filter(p=>!used.has(p));
     if(ungrouped.length){const section=E('section','ungrouped');if(t.groups.length)section.append(E('h3','group-title',s.other));for(const p of ungrouped)section.append(project(p));workTarget.append(section);}
     if(!projects.length&&!t.groups.some(g=>L(g.description)))panel.append(E('p','empty-state',L(t.emptyMessage)||s.empty));
-    if(active==='research'){const list=publications();if(list)panel.append(list);}
+    if(active==='research'||active==='data'){const list=publications();if(list)panel.append(list);}
     root.replaceChildren(panel);
     for(const id of ids.filter(x=>x!==active)){const empty=E('section');empty.id='panel-'+id;empty.hidden=true;empty.setAttribute('role','tabpanel');empty.setAttribute('aria-labelledby','tab-'+id);root.append(empty);}
   }
@@ -292,7 +310,7 @@
     render();
   });
   function revealContent(hash){
-    if(!/^(group|project|institution|publication)-/.test(hash)&&!['key-idea','research-strengths','research-projects','all-publications'].includes(hash))return;
+    if(!/^(group|project|institution|publication)-/.test(hash)&&!['key-idea','research-strengths','research-projects','data-approach','data-strengths','data-projects','all-publications'].includes(hash))return;
     const target=document.getElementById(hash);if(!target)return;
     for(let parent=target.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;
     target.scrollIntoView({block:'start'});
@@ -312,7 +330,11 @@
     try{history.replaceState(null,'','#'+hash);}catch(_){}revealContent(hash);
     const heading=document.getElementById(hash)?.querySelector('h4,h5');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
   });
-  window.addEventListener('hashchange',()=>{const hash=location.hash.slice(1);if(ids.includes(hash))select(hash);else if(active!=='research')select('research');revealContent(hash);});
+  window.addEventListener('hashchange',()=>{
+    const hash=location.hash.slice(1),next=trackForHash(hash,active);
+    if(next!==active||ids.includes(hash))select(next);
+    revealContent(hash);
+  });
   if(preview) {
     window.addEventListener('message',event=>{
       if(event.source!==window.parent || event.data?.type!=='llw-preview-content')return;

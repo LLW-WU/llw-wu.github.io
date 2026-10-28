@@ -9,14 +9,15 @@
   const KEY='llw-homepage-draft-doc-v3',stamp=SOURCE.revision;
   const guides={
     research:['科研中文正文按最新提供的 AR 文案更新；英文为对应译文，没有补写新的研究结论。','项目先展示模型图、简述和主要结果；原核心观点与正文保留在各自的完整介绍中。','校对提醒（正文仍按提供文案保留）：文案使用 SBDL，前面提供的对应论文使用 SDBD。','校对提醒（正文仍按提供文案保留）：BrainTGL 文案中的 67.8%、73.2%、72.0%，前面讨论中对应的是集成版本 BrainTGL-en。','旧版完整论文表与链接保留；本次没有重新核对所有书目信息。'],
-    data:['第一步把BCGX的流程写下来','第二步撰写下来你在每一步进行的判断过程','第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）','Conceptual key word：'],
+    data:['已按 Self内容-2-DS.docx 整理九个数据分析案例；实习时间与个人分工等待补充。','第一步把BCGX的流程写下来','第二步撰写下来你在每一步进行的判断过程','第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）','BCG X 的流程与模拟案例是待写内容，目前未作为已完成经历公开。'],
     business:['第一步把早稻田大学讲的课里涉及到的分析流程写下来，一天一个','第二步把AOCR和东京制造业大会的演讲内容，进行what-who-how-value分析，按照分析把它们写在案例中（主要体现对分析流程的理解和广度）']
   };
   const initialSection=new URLSearchParams(location.search).get('section');
   let draft=clone(SOURCE),notes={research:'',data:'',business:''},active=['research','data','business','publications'].includes(initialSection)?initialSection:'profile',lang='zh';
   try {
     const saved=JSON.parse(localStorage.getItem(KEY)||'null');
-    if(saved?.base===stamp&&saved?.content){draft=C.normalize(saved.content);notes={...notes,...saved.notes};status.textContent='已恢复这个浏览器中的未发布草稿。';}
+    if(saved?.notes)notes={...notes,...saved.notes};
+    if(saved?.base===stamp&&saved?.content){draft=C.normalize(saved.content);status.textContent='已恢复这个浏览器中的未发布草稿。';}
   }catch(_){status.textContent='已读取文件；草稿保存不可用时，请及时下载备份。';}
   function persist() {
     try{localStorage.setItem(KEY,JSON.stringify({base:stamp,content:draft,notes}));status.textContent='已保存到当前浏览器 · 尚未发布';}
@@ -82,7 +83,7 @@
     item.append(E('summary','editor-item-title',title+(p.visible?'':'（未公开）')));
     const path='tracks.'+key+'.projects.'+index;
     checkbox(item,'在主页显示这个项目',path+'.visible',p.visible);
-    if(key==='research'){
+    if(key==='research'||key==='data'){
       const display=E('details','form-details');display.append(E('summary','','项目展示与模型图'));
       lf(display,'主页项目名称',path+'.shortTitle',p.shortTitle,{hint:'用于项目标题和左侧目录。'});
       lf(display,'模型名称（选填）',path+'.modelName',p.modelName);
@@ -112,13 +113,13 @@
     return item;
   }
   function renderTrack(key) {
-    const t=draft.tracks[key],names={research:'学术科研',data:'数据科学',business:'商业设计'};
+    const t=draft.tracks[key],names={research:'学术科研',data:'数据分析',business:'商业设计'};
     heading(names[key],lang==='zh'?'正在编辑中文正文。切换 English 可单独修改英文译文。':'正在编辑英文正文。修改后不会自动改写中文。');
     writingGuide(key);
-    lf(form,key==='research'?'研究宗旨 / Research focus':'Key idea / Conceptual key word','tracks.'+key+'.concept',t.concept,{placeholder:key==='research'?'':'留空，待你自己确定'});
+    lf(form,key==='research'?'研究宗旨 / Research focus':key==='data'?'分析思路 / Analytical approach':'Key idea / Conceptual key word','tracks.'+key+'.concept',t.concept,{placeholder:key==='business'?'留空，待你自己确定':''});
     lf(form,'一句话说明','tracks.'+key+'.statement',t.statement,{multiline:true,rows:2});
     lf(form,'方向介绍','tracks.'+key+'.summary',t.summary,{multiline:true,rows:3});
-    if(key==='research')field(form,'研究能力（每行一项）','tracks.'+key+'.strengths.'+lang,(t.strengths[lang]||[]).join('\n'),{multiline:true,rows:4,hint:'在首页显示，可用 **文字** 突出能力名称。'});
+    if(key==='research'||key==='data')field(form,(key==='data'?'分析能力':'研究能力')+'（每行一项）','tracks.'+key+'.strengths.'+lang,(t.strengths[lang]||[]).join('\n'),{multiline:true,rows:4,hint:'在首页显示，可用 **文字** 突出能力名称。'});
     if(key!=='research')field(form,'工作流程（每行一步）','tracks.'+key+'.steps.'+lang,(t.steps[lang]||[]).join('\n'),{multiline:true,rows:5,hint:'按实际课程或练习填写；目前没有代填 BCGX 或商业课程流程。'});
     const settings=E('details','form-details');settings.append(E('summary','','栏目名称与分组设置'));
     lf(settings,'导航栏名称','tracks.'+key+'.label',t.label);lf(settings,'栏目标题','tracks.'+key+'.title',t.title);
