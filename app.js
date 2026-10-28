@@ -16,7 +16,7 @@
   else if(!preview){try{if(localStorage.getItem('llw-site-language')==='en')lang='en';}catch(_) {}}
   function trackForHash(hash,fallback){
     if(ids.includes(hash))return hash;
-    if(/^data-(approach|strengths|projects)$/.test(hash)||/^(project|group|institution|overview)-ds-/.test(hash))return 'data';
+    if(/^data-(approach|strengths|projects)$/.test(hash)||/^ds-source-/.test(hash)||/^(project|group|institution|overview)-ds-/.test(hash))return 'data';
     if(['key-idea','research-strengths','research-projects'].includes(hash)||/^(project|group|institution)-/.test(hash))return 'research';
     return fallback;
   }
@@ -183,11 +183,17 @@
       if(!institution||key!==lastInstitution){
         institution=E('section','institution-block');institution.id='institution-'+g.id;lastInstitution=key;
         const head=E('div','institution-label'),title=E('h3','institution-name',name);title.id='institution-title-'+g.id;
-        institution.setAttribute('aria-labelledby',title.id);head.append(title);if(period)head.append(E('span','institution-dates',period));institution.append(head);works.append(institution);
+        institution.setAttribute('aria-labelledby',title.id);head.append(title);if(period)head.append(E('span','institution-dates',period));institution.append(head);
+        if(active==='data'&&L(g.focus)){
+          const overview=E('div','project-group institution-overview');overview.append(E('h4','project-group-title',L(g.focus)));
+          if(L(g.description))overview.append(C.paragraph(L(g.description),'group-description'));
+          institution.append(overview);
+        }
+        works.append(institution);
       }
       const group=E('section','project-group');group.id='group-'+g.id;
       if(L(g.title))group.append(E('h4','project-group-title',L(g.title)));
-      if(L(g.description)){
+      if(L(g.description)&&!(active==='data'&&L(g.focus))){
         const intro=E('details','group-overview');intro.id='overview-'+g.id;
         intro.append(E('summary','',lang==='zh'?'方向说明':'Research focus'),C.paragraph(L(g.description),'group-description'));group.append(intro);
       }
@@ -214,7 +220,7 @@
     return section;
   }
   function contents() {
-    const nav=document.getElementById('page-toc');nav.replaceChildren();tocTargets=[];nav.hidden=!['research','data'].includes(active);if(nav.hidden)return;
+    const nav=document.getElementById('page-toc');nav.replaceChildren();tocTargets=[];nav.hidden=!['research','data'].includes(active)||!!data.tracks[active].sourceBlocks.length;if(nav.hidden)return;
     const t=data.tracks[active],sections=trackSections();
     const heading=E('h2','sidebar-heading',lang==='zh'?'目录':'Contents');heading.id='toc-label';nav.append(heading);
     const list=E('ul','toc-list');nav.append(list);
@@ -246,6 +252,28 @@
     const t=data.tracks[active],s=strings[lang];
     const panel=E('section','tab-panel');panel.id='panel-'+active;
     panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','tab-'+active);panel.tabIndex=0;
+    if(t.sourceBlocks.length){
+      panel.classList.add('docx-original');panel.lang='zh-CN';
+      for(const block of t.sourceBlocks){
+        const paragraph=E('p','source-paragraph');paragraph.id=block.id;paragraph.dataset.sourceStyle=block.style;
+        if(block.runs.map(run=>run.text).join('')===block.text){
+          for(const run of block.runs){
+            let node=document.createTextNode(run.text);
+            for(const [property,tag] of [['underline','u'],['italic','em'],['bold','strong']]){
+              if(run[property]){const wrapper=E(tag);wrapper.append(node);node=wrapper;}
+            }
+            paragraph.append(node);
+          }
+        }else paragraph.textContent=block.text;
+        if(!block.text)paragraph.append(E('br'));
+        panel.append(paragraph);
+      }
+      root.replaceChildren(panel);
+      for(const id of ids.filter(id=>id!==active)){
+        const empty=E('section');empty.id='panel-'+id;empty.hidden=true;empty.setAttribute('role','tabpanel');empty.setAttribute('aria-labelledby','tab-'+id);root.append(empty);
+      }
+      return;
+    }
     const concept=L(t.concept),statement=L(t.statement),summary=L(t.summary);
     const projects=t.projects.filter(p=>p.visible&&L(p.title));
     const groups=t.groups.filter(g=>projects.some(p=>p.group===g.id)||L(g.description));

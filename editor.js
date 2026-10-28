@@ -9,7 +9,7 @@
   const KEY='llw-homepage-draft-doc-v3',stamp=SOURCE.revision;
   const guides={
     research:['科研中文正文按最新提供的 AR 文案更新；英文为对应译文，没有补写新的研究结论。','项目先展示模型图、简述和主要结果；原核心观点与正文保留在各自的完整介绍中。','校对提醒（正文仍按提供文案保留）：文案使用 SBDL，前面提供的对应论文使用 SDBD。','校对提醒（正文仍按提供文案保留）：BrainTGL 文案中的 67.8%、73.2%、72.0%，前面讨论中对应的是集成版本 BrainTGL-en。','旧版完整论文表与链接保留；本次没有重新核对所有书目信息。'],
-    data:['已按 Self内容-2-DS.docx 整理九个数据分析案例；实习时间与个人分工等待补充。','第一步把BCGX的流程写下来','第二步撰写下来你在每一步进行的判断过程','第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）','BCG X 的流程与模拟案例是待写内容，目前未作为已完成经历公开。'],
+    data:['九个案例的中文名称和正文已按 Self内容-2-DS.docx 原文恢复，只做标题拆分与段落排版，不另写能力概括。','第一步把BCGX的流程写下来','第二步撰写下来你在每一步进行的判断过程','第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）','BCG X 的流程与模拟案例是待写内容，目前未作为已完成经历公开。'],
     business:['第一步把早稻田大学讲的课里涉及到的分析流程写下来，一天一个','第二步把AOCR和东京制造业大会的演讲内容，进行what-who-how-value分析，按照分析把它们写在案例中（主要体现对分析流程的理解和广度）']
   };
   const initialSection=new URLSearchParams(location.search).get('section');
@@ -115,6 +115,11 @@
   function renderTrack(key) {
     const t=draft.tracks[key],names={research:'学术科研',data:'数据分析',business:'商业设计'};
     heading(names[key],lang==='zh'?'正在编辑中文正文。切换 English 可单独修改英文译文。':'正在编辑英文正文。修改后不会自动改写中文。');
+    if(t.sourceBlocks.length){
+      form.append(E('p','form-help','以下文字按 Word 原段落顺序保存，包含原文件中的空白段落。'));
+      t.sourceBlocks.forEach((block,index)=>field(form,'原文第 '+(index+1)+' 段','tracks.'+key+'.sourceBlocks.'+index+'.text',block.text,{multiline:true,rows:block.text.length>120?6:2}));
+      return;
+    }
     writingGuide(key);
     lf(form,key==='research'?'研究宗旨 / Research focus':key==='data'?'分析思路 / Analytical approach':'Key idea / Conceptual key word','tracks.'+key+'.concept',t.concept,{placeholder:key==='business'?'留空，待你自己确定':''});
     lf(form,'一句话说明','tracks.'+key+'.statement',t.statement,{multiline:true,rows:2});

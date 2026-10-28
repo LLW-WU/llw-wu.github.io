@@ -490,3 +490,8 @@ body:not(.editor-body) .footer { margin-top:0;border-top:0;padding-top:0;padding
  .selected-project { break-inside:avoid; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+/* The DS document keeps its original paragraphs and inline emphasis. */
+.docx-original .source-paragraph { margin:0 0 12px;font-size:14px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;scroll-margin-top:24px; }
+.docx-original .source-paragraph strong { font-weight:650; }
+@media(max-width:560px){ .docx-original .source-paragraph { font-size:13px; } }

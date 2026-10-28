@@ -1,7 +1,7 @@
 /* Bilingual personal homepage and CV content. */
 window.SITE_CONTENT = {
   "schemaVersion": 3,
-  "revision": "self-content-20261028-data-v19",
+  "revision": "self-content-20261028-ds-exact-v21",
   "profile": {
     "name": {
       "zh": "刘令文",
@@ -791,837 +791,1870 @@ window.SITE_CONTENT = {
         "en": "Data Science"
       },
       "title": {
-        "zh": "数据分析",
+        "zh": "Data Scientist (DS)",
         "en": "Data Scientist (DS)"
       },
       "concept": {
-        "zh": "从数据中发现可复用的预测模式",
-        "en": "Find reusable predictive patterns in data"
+        "zh": "",
+        "en": ""
       },
       "statement": {
-        "zh": "把反复出现的模式转化为特征，再检验这些特征能帮助判断什么。",
-        "en": "Turn recurring patterns into features, then test which decisions those features can support."
+        "zh": "",
+        "en": ""
       },
       "summary": {
-        "zh": "面对时序、关系网络和脑影像数据，我关注模式识别、特征筛选与复用，并通过任务对照和分组分析检验这些信息的用途。",
-        "en": "I analyse time series, relational networks and brain imaging through pattern recognition, feature selection and reuse, testing their value through task comparisons and subgroup analysis."
+        "zh": "",
+        "en": ""
       },
       "strengths": {
-        "zh": [
-          "**模式识别** 从时序与关系数据中提取反复出现的模式。",
-          "**特征筛选与复用** 分离稳定信息与短期变化，比较不同任务的特征需求。",
-          "**任务检验** 通过对照、迁移与分组分析，检验特征适用于哪些判断。"
-        ],
-        "en": [
-          "**Pattern recognition** Identify recurring patterns in time series and relational data.",
-          "**Feature selection and reuse** Separate stable information from short-term changes and compare feature needs across tasks.",
-          "**Task evaluation** Use comparisons, transfer and subgroup analysis to test which decisions the features can support."
-        ]
+        "zh": [],
+        "en": []
       },
       "steps": {
         "zh": [],
         "en": []
       },
-      "groups": [
-        {
-          "id": "ds-goldwind",
-          "institution": {
-            "zh": "金风科技",
-            "en": "Goldwind"
-          },
-          "period": {
-            "zh": "实习",
-            "en": "Internship"
-          },
-          "title": {
-            "zh": "",
-            "en": ""
-          },
-          "description": {
-            "zh": "",
-            "en": ""
-          },
-          "focus": {
-            "zh": "",
-            "en": ""
-          },
-          "connection": {
-            "zh": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "ds-waseda",
-          "institution": {
-            "zh": "早稻田大学",
-            "en": "Waseda University"
-          },
-          "period": {
-            "zh": "2025—今",
-            "en": "2025–present"
-          },
-          "title": {
-            "zh": "",
-            "en": ""
-          },
-          "description": {
-            "zh": "",
-            "en": ""
-          },
-          "focus": {
-            "zh": "",
-            "en": ""
-          },
-          "connection": {
-            "zh": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "ds-neu-temporal",
-          "institution": {
-            "zh": "东北大学",
-            "en": "Northeastern University"
-          },
-          "period": {
-            "zh": "2022—2025",
-            "en": "2022–2025"
-          },
-          "title": {
-            "zh": "稳定与变化特征的筛选",
-            "en": "Selecting stable and changing features"
-          },
-          "description": {
-            "zh": "围绕时序、关系网络与脑影像数据，开展特征筛选、模式匹配、关系分析及跨数据复用，检验不同信息对样本分类、群体划分和结果估计的作用。",
-            "en": "I study feature selection, pattern matching, relational analysis and feature reuse across time series, networks and brain imaging, examining how different information supports classification, grouping and outcome estimation."
-          },
-          "focus": {
-            "zh": "",
-            "en": ""
-          },
-          "connection": {
-            "zh": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "ds-neu-longitudinal",
-          "institution": {
-            "zh": "东北大学",
-            "en": "Northeastern University"
-          },
-          "period": {
-            "zh": "2022—2025",
-            "en": "2022–2025"
-          },
-          "title": {
-            "zh": "纵向数据的模式匹配",
-            "en": "Pattern matching in longitudinal data"
-          },
-          "description": {
-            "zh": "",
-            "en": ""
-          },
-          "focus": {
-            "zh": "",
-            "en": ""
-          },
-          "connection": {
-            "zh": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "ds-neu-relations",
-          "institution": {
-            "zh": "东北大学",
-            "en": "Northeastern University"
-          },
-          "period": {
-            "zh": "2022—2025",
-            "en": "2022–2025"
-          },
-          "title": {
-            "zh": "连接网络的特征组合",
-            "en": "Combining features in connected data"
-          },
-          "description": {
-            "zh": "",
-            "en": ""
-          },
-          "focus": {
-            "zh": "",
-            "en": ""
-          },
-          "connection": {
-            "zh": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "ds-neu-transfer",
-          "institution": {
-            "zh": "东北大学",
-            "en": "Northeastern University"
-          },
-          "period": {
-            "zh": "2022—2025",
-            "en": "2022–2025"
-          },
-          "title": {
-            "zh": "跨数据集的特征复用",
-            "en": "Reusing features across datasets"
-          },
-          "description": {
-            "zh": "",
-            "en": ""
-          },
-          "focus": {
-            "zh": "",
-            "en": ""
-          },
-          "connection": {
-            "zh": "",
-            "en": ""
-          }
-        }
-      ],
-      "projects": [
-        {
-          "id": "ds-electricity",
-          "visible": true,
-          "group": "ds-goldwind",
-          "title": {
-            "zh": "电价走势分析与估计",
-            "en": "Electricity-price pattern analysis and estimation"
-          },
-          "shortTitle": {
-            "zh": "电价走势分析与估计",
-            "en": "Electricity-price pattern analysis and estimation"
-          },
-          "brief": {
-            "zh": "整合电价、发电记录与天气数据，提取反复出现的走势，为售电定价与利润空间评估提供参考。",
-            "en": "Combine electricity prices, generation records and weather data to identify recurring trends and inform pricing and margin assessment."
-          },
-          "summary": {
-            "zh": "整合历史电价、发电记录和天气预报数据，为售电定价提供价格参考。\n\n通过时间分段与可视化比较，发现部分电价走势反复出现，复杂走势可以由基础模式加权组合。在此基础上，提取基础走势，再结合天气信息确定组合权重，生成新的电价估计，为定价与利润空间评估提供参考。",
-            "en": "Integrated historical electricity prices, generation records and weather forecasts to provide price references for electricity sales.\n\nBy comparing time segments and visualising the data, I identified recurring price trends and found that more complex trends could be represented as weighted combinations of basic patterns. I extracted these patterns and used weather information to determine their weights, producing price estimates to inform pricing and margin assessment."
-          },
-          "result": {
-            "zh": "",
-            "en": ""
-          },
-          "modelName": {
-            "zh": "",
-            "en": ""
-          },
-          "year": {
-            "zh": "",
-            "en": ""
-          },
-          "context": {
-            "zh": "机器学习 · 时序数据分析",
-            "en": "Machine learning · Time-series analysis"
-          },
-          "url": "",
-          "publicationId": "",
-          "modelImage": "",
-          "modelSource": "",
-          "modelCaption": {
-            "zh": "",
-            "en": ""
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "",
-            "en": ""
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-mpi",
-          "visible": true,
-          "group": "ds-waseda",
-          "title": {
-            "zh": "先验约束下的特征提取与图像恢复",
-            "en": "Feature extraction and image recovery with structural priors"
-          },
-          "shortTitle": {
-            "zh": "先验约束下的特征提取与图像恢复",
-            "en": "Feature extraction and image recovery with structural priors"
-          },
-          "brief": {
-            "zh": "把血管结构先验转化为特征提取的约束，检验信号表示是否保留了图像恢复所需的信息。",
-            "en": "Turn vessel-structure priors into constraints on feature extraction and examine whether signal representations retain information needed for image recovery."
-          },
-          "summary": {
-            "zh": "MPI 图像重建是一个从测量信号恢复图像的逆问题。对于血管成像，重建结果不仅需要呈现清晰的血管形态，还需要准确保留血管之间的连接关系。\n\n这一项目将血管结构信息作为逆问题求解的辅助约束，通过结构辅助监督，引导模型在信号表示中保留恢复血管结构所需的信息。从数据分析的角度，关注的是怎样将先验知识用于特征提取，并检验所提取的信息能否支持图像恢复。",
-            "en": "MPI reconstruction is an inverse problem: recovering an image from measured signals. Vascular imaging requires both clear vessel shapes and accurate connections between vessels.\n\nThis project uses vessel structure as an auxiliary constraint on the inverse problem. Structural supervision guides the model to retain information needed for reconstruction in its signal representations. From a data-analysis perspective, the question is how prior knowledge can guide feature extraction and whether the resulting information supports image recovery."
-          },
-          "result": {
-            "zh": "",
-            "en": ""
-          },
-          "modelName": {
-            "zh": "",
-            "en": ""
-          },
-          "year": {
-            "zh": "",
-            "en": ""
-          },
-          "context": {
-            "zh": "",
-            "en": ""
-          },
-          "url": "",
-          "publicationId": "",
-          "modelImage": "assets/models/mpi.webp",
-          "modelSource": "VesSBI-MPI-BSPC.pdf · Fig. 2 · p. 9",
-          "modelCaption": {
-            "zh": "MPI 血管重建 · 模型结构图",
-            "en": "MPI vessel reconstruction · Model architecture"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "",
-            "en": ""
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-stdgl",
-          "visible": true,
-          "group": "ds-neu-temporal",
-          "title": {
-            "zh": "稳定与变化特征的任务对照",
-            "en": "Comparing stable and changing features across tasks"
-          },
-          "shortTitle": {
-            "zh": "稳定与变化特征的任务对照",
-            "en": "Comparing stable and changing features across tasks"
-          },
-          "brief": {
-            "zh": "将稳定时序模式与突变模式分开表示，通过任务对照检验哪些特征更有预测价值。",
-            "en": "Separate stable temporal patterns from abrupt changes and compare their predictive value across tasks."
-          },
-          "summary": {
-            "zh": "通过解耦模型，将动态图序列中的稳定时序模式与突变模式分开，检验不同任务需要哪类特征中的预测线索。\n\n在 Bitcoin-Alpha 用户关系网络中，预测下一时刻会出现哪些连接时，变化特征更有效；判断用户关系类别时，稳定特征更有效。在 Elliptic 交易网络的节点分类中，两类特征组合使用的效果最好。\n\n这些对照分析表明，不同任务需要的特征并不相同，应根据任务选择稳定信息、变化信息，或两者的组合。",
-            "en": "A disentanglement model separates stable temporal patterns from abrupt changes in dynamic graph sequences, allowing their predictive roles to be tested across tasks.\n\nOn Bitcoin-Alpha, changing features were more effective for predicting future links, while stable features performed better for classifying relationships. On the Elliptic transaction network, combining both types worked best for node classification.\n\nThese comparisons show that feature selection depends on the task: stable information, changing information or their combination may be needed."
-          },
-          "result": {
-            "zh": "同一数据集中的链路预测与关系分类，需要不同的特征。",
-            "en": "Link prediction and relationship classification required different features even within the same dataset."
-          },
-          "modelName": {
-            "zh": "STDGL",
-            "en": "STDGL"
-          },
-          "year": {
-            "zh": "2024",
-            "en": "2024"
-          },
-          "context": {
-            "zh": "WSDM 2024",
-            "en": "WSDM 2024"
-          },
-          "url": "https://dl.acm.org/doi/abs/10.1145/3616855.3635765",
-          "publicationId": "pub-3",
-          "modelImage": "assets/models/stdgl.webp",
-          "modelSource": "Capturing temporal node evolution via self-supervised learning A new perspective on dynamic graph learning.pdf · Fig. 2 · p. 4",
-          "modelCaption": {
-            "zh": "STDGL · 模型结构图",
-            "en": "STDGL · Model architecture"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "通过自监督学习捕捉节点的时间演化：动态图学习的新视角",
-            "en": "Capturing temporal node evolution via self-supervised learning: A new perspective on dynamic graph learning"
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-sdbd",
-          "visible": true,
-          "group": "ds-neu-temporal",
-          "title": {
-            "zh": "疾病相关特征与短期波动分离",
-            "en": "Separating disease-related features from short-term fluctuations"
-          },
-          "shortTitle": {
-            "zh": "疾病相关特征与短期波动分离",
-            "en": "Separating disease-related features from short-term fluctuations"
-          },
-          "brief": {
-            "zh": "分离持续连接模式与短暂波动，比较所保留特征的分类效果，并分析它们主要来自哪些脑区。",
-            "en": "Separate persistent connectivity patterns from short-term fluctuations, evaluate their classification performance and identify the regions contributing these features."
-          },
-          "summary": {
-            "zh": "针对短暂波动可能干扰疾病识别的问题，通过解耦模型，将持续出现的脑网络连接模式与短暂变化分开，评估所保留特征的分类效果及其来源。\n\n使用持续模式时，自闭症识别准确率达到 70.4%。进一步分析发现，15 个关键脑区中有 10 个属于中央执行网络。分析既检验了特征是否有用，也定位了这些信息主要来自哪里。",
-            "en": "To examine whether short-term fluctuations interfere with disease identification, a disentanglement model separates persistent brain-connectivity patterns from transient changes. The retained features are evaluated for classification and analysed to identify their sources.\n\nUsing persistent patterns achieved 70.4% accuracy in autism identification. Of the 15 key brain regions identified, 10 belonged to the central executive network. The analysis assessed both the usefulness of the features and where the information came from."
-          },
-          "result": {
-            "zh": "持续模式的识别准确率为 70.4%；15 个关键脑区中，10 个属于中央执行网络。",
-            "en": "Persistent patterns achieved 70.4% accuracy; 10 of the 15 key regions belonged to the central executive network."
-          },
-          "modelName": {
-            "zh": "SDBD",
-            "en": "SDBD"
-          },
-          "year": {
-            "zh": "2024",
-            "en": "2024"
-          },
-          "context": {
-            "zh": "ICASSP 2024",
-            "en": "ICASSP 2024"
-          },
-          "url": "https://ieeexplore.ieee.org/abstract/document/10446417",
-          "publicationId": "pub-5",
-          "modelImage": "assets/models/sbdl.webp",
-          "modelSource": "Towards Disease-Aware Self-Supervised Dynamic Brain Network Learning For Mental Diagnosis.pdf · Fig. 2 · p. 2",
-          "modelCaption": {
-            "zh": "疾病相关特征提取 · 模型结构图",
-            "en": "Disease-related feature extraction · Model architecture"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "面向精神疾病诊断的疾病感知自监督动态脑网络学习",
-            "en": "Towards Disease-Aware Self-Supervised Dynamic Brain Network Learning For Mental Diagnosis"
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-sintbanknet",
-          "visible": true,
-          "group": "ds-neu-longitudinal",
-          "title": {
-            "zh": "纵向模式匹配与患者分组",
-            "en": "Longitudinal pattern matching and patient grouping"
-          },
-          "shortTitle": {
-            "zh": "纵向模式匹配与患者分组",
-            "en": "Longitudinal pattern matching and patient grouping"
-          },
-          "brief": {
-            "zh": "构建基础模式库，用加权匹配描述新观测，再按变化轨迹分组，分别检验早期指标与后续结果的关系。",
-            "en": "Build a bank of basic patterns, describe new observations through weighted matching and test early indicators against later outcomes within trajectory-based groups."
-          },
-          "summary": {
-            "zh": "对多时间点的纵向脑影像数据提取特征，通过主成分分析构建基础模式库。将新时间点的脑影像与基础模式进行加权匹配，用组合权重描述观测特征，再结合治疗期间的变化轨迹进行患者分组。\n\n两组在治疗首周呈现不同的平均脑连接变化：默认模式网络与背侧注意网络之间的连接，第一组减弱，第二组增强。第一组治疗前两周的连接变化，能够帮助估计出院时抑郁、焦虑和失眠症状的改善；第二组尚未发现显著关联。\n\n项目将模式复用与分组检验结合，分析早期指标在人群中的适用差异，并未证明哪一组患者的治疗效果更好。",
-            "en": "Features are extracted from longitudinal brain imaging at multiple time points, and principal component analysis is used to build a bank of basic patterns. Images from a new time point are matched to weighted combinations of these patterns. The weights describe the observations, while changes during treatment are used to group patients by trajectory.\n\nDuring the first treatment week, average connectivity between the default mode and dorsal attention networks decreased in the first group and increased in the second. In the first group, connectivity changes over the first two weeks helped estimate improvements in depression, anxiety and insomnia at discharge. No significant association was found in the second group.\n\nThe project combines pattern reuse with subgroup analysis to examine differences in the applicability of early indicators. It does not establish that one group had better treatment outcomes."
-          },
-          "result": {
-            "zh": "早期连接变化与症状改善的关联存在群体差异。",
-            "en": "Associations between early connectivity changes and symptom improvement differed between groups."
-          },
-          "modelName": {
-            "zh": "SIntBankNet",
-            "en": "SIntBankNet"
-          },
-          "year": {
-            "zh": "2025",
-            "en": "2025"
-          },
-          "context": {
-            "zh": "Science Bulletin",
-            "en": "Science Bulletin"
-          },
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41062371/",
-          "publicationId": "pub-2",
-          "modelImage": "assets/models/trajectories.webp",
-          "modelSource": "Divergent neural trajectories in young patients with major depressive episodes- longitudinal subtypes and their predictive value for treatment outcomes.pdf · Fig. 1 · p. 2",
-          "modelCaption": {
-            "zh": "纵向脑影像分析 · 研究流程图",
-            "en": "Longitudinal brain-imaging analysis · Study workflow"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "重性抑郁发作青年患者的分化神经轨迹：纵向亚型及其对治疗结局的预测价值",
-            "en": "Divergent neural trajectories in young patients with major depressive episodes: longitudinal subtypes and their predictive value for treatment outcomes"
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-graphtel",
-          "visible": true,
-          "group": "ds-neu-relations",
-          "title": {
-            "zh": "整体与局部连接特征整合",
-            "en": "Combining global and local connectivity features"
-          },
-          "shortTitle": {
-            "zh": "整体与局部连接特征整合",
-            "en": "Combining global and local connectivity features"
-          },
-          "brief": {
-            "zh": "当对象属性不足以区分样本时，将整体连接模式与局部结构细节纳入特征提取。",
-            "en": "When object attributes are insufficient to distinguish samples, include global connectivity patterns and local structural details in feature extraction."
-          },
-          "summary": {
-            "zh": "围绕“属性相似，但所属类别不同”的样本区分问题，将整体连接方式与局部连接细节纳入特征提取，并通过恢复被遮住的连接，引导模型学习这些关系模式。\n\n在 7 个图分类数据集中的 6 个上，GraphTEL 的准确率高于 GraphMAE。这些结果表明，连接方式可以提供对象属性之外的有效分类信息。",
-            "en": "To distinguish samples with similar attributes but different classes, the method incorporates global connectivity and local structural details into feature extraction. Recovering masked connections encourages the model to learn these relational patterns.\n\nGraphTEL achieved higher accuracy than GraphMAE on six of seven graph-classification datasets. The results show that connectivity can provide classification information beyond object attributes."
-          },
-          "result": {
-            "zh": "7 个图分类数据集中，6 个的准确率高于 GraphMAE。",
-            "en": "Higher accuracy than GraphMAE on six of seven graph-classification datasets."
-          },
-          "modelName": {
-            "zh": "GraphTEL",
-            "en": "GraphTEL"
-          },
-          "year": {
-            "zh": "2025",
-            "en": "2025"
-          },
-          "context": {
-            "zh": "DASFAA 2025",
-            "en": "DASFAA 2025"
-          },
-          "url": "https://dasfaa2025.github.io/paper/research/research_431_paper.pdf",
-          "publicationId": "pub-0",
-          "modelImage": "assets/models/graphtel.webp",
-          "modelSource": "Structure-aware Self-supervised Graph Representation Learning.pdf · Fig. 2 · p. 5",
-          "modelCaption": {
-            "zh": "GraphTEL · 模型结构图",
-            "en": "GraphTEL · Model architecture"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "结构感知的自监督图表示学习",
-            "en": "Structure-aware Self-supervised Graph Representation Learning"
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-braintgl",
-          "visible": true,
-          "group": "ds-neu-relations",
-          "title": {
-            "zh": "多变量时序与动态关系建模",
-            "en": "Modelling multivariate time series and dynamic relationships"
-          },
-          "shortTitle": {
-            "zh": "多变量时序与动态关系建模",
-            "en": "Modelling multivariate time series and dynamic relationships"
-          },
-          "brief": {
-            "zh": "联合分析变量自身的时序变化与变量之间的动态联系，检验两类信息能否共同改善分类。",
-            "en": "Jointly analyse changes within variables and their dynamic relationships to test whether both types of information improve classification."
-          },
-          "summary": {
-            "zh": "将脑区活动记录与脑区之间随时间变化的连接共同作为分析对象，结合 GCN 与 LSTM 学习关系特征和时间变化，检验两类信息能否共同改善疾病识别。\n\n在自闭症识别测试中，准确率达到 67.8%，对比方法 GroupINN 和 ST-GCN 分别为 63.4% 和 59.2%；在抑郁症与双相障碍识别中，准确率分别为 73.2% 和 72.0%。结果支持同时利用变量自身的变化和变量之间的联系变化。",
-            "en": "Brain-region activity records and time-varying connections are analysed together. GCN and LSTM components learn relational features and temporal changes, testing whether the two sources jointly improve disease identification.\n\nAccuracy was 67.8% for autism identification, compared with 63.4% for GroupINN and 59.2% for ST-GCN. Accuracy reached 73.2% for depression and 72.0% for bipolar disorder. The results support using both changes within variables and changes in their relationships."
-          },
-          "result": {
-            "zh": "自闭症、抑郁症与双相障碍识别准确率分别为 67.8%、73.2% 和 72.0%。",
-            "en": "Accuracy was 67.8% for autism, 73.2% for depression and 72.0% for bipolar disorder."
-          },
-          "modelName": {
-            "zh": "BrainTGL",
-            "en": "BrainTGL"
-          },
-          "year": {
-            "zh": "2023",
-            "en": "2023"
-          },
-          "context": {
-            "zh": "Computers in Biology and Medicine",
-            "en": "Computers in Biology and Medicine"
-          },
-          "url": "https://www.sciencedirect.com/science/article/pii/S001048252201229X",
-          "publicationId": "pub-6",
-          "modelImage": "assets/models/braintgl.webp",
-          "modelSource": "BrainTGL- A dynamic graph representation learning model for brain network analysis.pdf · Fig. 2 · p. 3",
-          "modelCaption": {
-            "zh": "BrainTGL · 模型结构图",
-            "en": "BrainTGL · Model architecture"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "BrainTGL：用于脑网络分析的动态图表示学习模型",
-            "en": "BrainTGL: A dynamic graph representation learning model for brain network analysis"
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-brainhgl",
-          "visible": true,
-          "group": "ds-neu-relations",
-          "title": {
-            "zh": "连接类型划分与关键关系分析",
-            "en": "Connection typing and analysis of key relationships"
-          },
-          "shortTitle": {
-            "zh": "连接类型划分与关键关系分析",
-            "en": "Connection typing and analysis of key relationships"
-          },
-          "brief": {
-            "zh": "先划分连接类型，再比较网络内部、网络之间及多网络组合的分类贡献，将判断依据定位到具体关系。",
-            "en": "Classify connection types, compare features within and between networks and identify the relational combinations that contribute to classification."
-          },
-          "summary": {
-            "zh": "按脑区所属的功能网络划分连接类型，构建网络内部、网络之间及多网络组合的特征，比较它们对分类的贡献。\n\n在抑郁症识别中，最重要的模式通过显著性网络，连接默认模式网络与中央执行网络；在自闭症识别中，前四类关键模式都包含默认模式网络与中央执行网络之间的联系。分析将不同分类任务的判断依据定位到了具体的关系组合。",
-            "en": "Connections are typed by the functional networks of their brain regions. Features within networks, between networks and across network combinations are constructed and compared for their contributions to classification.\n\nFor depression identification, the most important pattern linked the default mode and central executive networks through the salience network. For autism identification, all four leading patterns included connections between the default mode and central executive networks. The analysis located classification evidence in specific combinations of relationships."
-          },
-          "result": {
-            "zh": "",
-            "en": ""
-          },
-          "modelName": {
-            "zh": "BrainHGL",
-            "en": "BrainHGL"
-          },
-          "year": {
-            "zh": "2024 · 在线发表",
-            "en": "2024 · Online publication"
-          },
-          "context": {
-            "zh": "IEEE TMI",
-            "en": "IEEE TMI"
-          },
-          "url": "https://ieeexplore.ieee.org/abstract/document/10781429",
-          "publicationId": "pub-4",
-          "modelImage": "assets/models/brainhgl.webp",
-          "modelSource": "Heterogeneous Graph Representation Learning Framework for Resting-State Functional Connectivity Analysis.pdf · Fig. 3 · p. 4",
-          "modelCaption": {
-            "zh": "BrainHGL · 模型结构图",
-            "en": "BrainHGL · Model architecture"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "用于静息态功能连接分析的异构图表示学习框架",
-            "en": "Heterogeneous Graph Representation Learning Framework for Resting-State Functional Connectivity Analysis"
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        },
-        {
-          "id": "ds-braingsl",
-          "visible": true,
-          "group": "ds-neu-transfer",
-          "title": {
-            "zh": "有限标注下的跨数据特征复用",
-            "en": "Feature reuse across datasets with limited labels"
-          },
-          "shortTitle": {
-            "zh": "有限标注下的跨数据特征复用",
-            "en": "Feature reuse across datasets with limited labels"
-          },
-          "brief": {
-            "zh": "通过遮挡与恢复连接学习通用模式，再比较相关疾病任务之间的迁移效果，检验哪些特征能够复用。",
-            "en": "Learn general patterns by masking and recovering connections, then test which features transfer between related disease tasks."
-          },
-          "summary": {
-            "zh": "针对医学标注不足的问题，先通过遮挡与恢复脑网络连接，从数据本身学习通用特征，再用于疾病分类，并比较不同疾病数据之间的迁移效果。\n\n自闭症数据中学到的特征能够改善双相障碍识别，反向迁移同样有效。结果支持在这些相关任务之间复用部分连接特征，为目标任务提供额外信息。",
-            "en": "To address limited medical labels, the model first learns general features from the data by masking and recovering brain-network connections. These features are then used for disease classification, and transfer between disease datasets is compared.\n\nFeatures learned from autism data improved bipolar-disorder identification, and transfer in the reverse direction also helped. The results support reusing some connectivity features across these related tasks to provide additional information for the target task."
-          },
-          "result": {
-            "zh": "在自闭症与双相障碍识别之间，双向迁移均能改善目标任务。",
-            "en": "Transfer improved the target task in both directions between autism and bipolar-disorder identification."
-          },
-          "modelName": {
-            "zh": "BrainGSL",
-            "en": "BrainGSL"
-          },
-          "year": {
-            "zh": "2023",
-            "en": "2023"
-          },
-          "context": {
-            "zh": "IEEE JBHI",
-            "en": "IEEE JBHI"
-          },
-          "url": "https://ieeexplore.ieee.org/abstract/document/10122156",
-          "publicationId": "pub-7",
-          "modelImage": "assets/models/braingsl.webp",
-          "modelSource": "Graph self-supervised learning with application to brain networks analysis.pdf · Fig. 2 · p. 4",
-          "modelCaption": {
-            "zh": "BrainGSL · 模型结构图",
-            "en": "BrainGSL · Model architecture"
-          },
-          "notes": {
-            "zh": "",
-            "en": ""
-          },
-          "role": {
-            "zh": "",
-            "en": ""
-          },
-          "contribution": {
-            "zh": "",
-            "en": ""
-          },
-          "takeaway": {
-            "zh": "",
-            "en": ""
-          },
-          "paperTitle": {
-            "zh": "面向脑网络分析的图自监督学习",
-            "en": "Graph self-supervised learning with application to brain networks analysis"
-          },
-          "linkText": {
-            "zh": "相关链接 ↗",
-            "en": "Read more ↗"
-          },
-          "featured": false
-        }
-      ],
+      "groups": [],
+      "projects": [],
       "emptyMessage": {
-        "zh": "内容整理中。",
-        "en": "Content in preparation."
-      }
+        "zh": "",
+        "en": ""
+      },
+      "sourceBlocks": [
+        {
+          "id": "ds-source-001",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-002",
+          "text": "Data Scientist (DS)",
+          "style": "",
+          "runs": [
+            {
+              "text": "Data Scientist (",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "D",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "S)",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-003",
+          "text": "第一步把BCGX的流程写下来",
+          "style": "",
+          "runs": [
+            {
+              "text": "第一步把BCGX的流程写下来",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-004",
+          "text": "第二步撰写下来你在每一步进行的判断过程",
+          "style": "",
+          "runs": [
+            {
+              "text": "第二步撰写下来你在每一步进行的判断过程",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-005",
+          "text": "第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）",
+          "style": "",
+          "runs": [
+            {
+              "text": "第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-006",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-007",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "data-approach",
+          "text": "key word：",
+          "style": "",
+          "runs": [
+            {
+              "text": "key word：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-009",
+          "text": "从数据中发现可复用的预测模式，以证明假设、完成任务、回答问题：面对复杂数据，怎样发现反复出现的模式，把它们变成可用特征，再检验这些特征能帮助判断什么。",
+          "style": "",
+          "runs": [
+            {
+              "text": "从数据中发现可复用的预测模",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "式",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "，以证明假设、完成任务、回答问题",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "面对复杂数据，怎样发现反复出现的模式，把它们变成可用特征，再检验这些特征能帮助判断什么。",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-010",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-011",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "data-projects",
+          "text": "项目：",
+          "style": "",
+          "runs": [
+            {
+              "text": "项目：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-013",
+          "text": "金风科技（实习）",
+          "style": "",
+          "runs": [
+            {
+              "text": "金风科技（实习）",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-electricity",
+          "text": "机器学习模型｜电价时序数据历史走势模式分析与估计：从历史数据中提取重复出现的走势，再结合外部条件加权组合，估计新的电价变化。整合历史电价、发电记录和天气预报数据，为售电定价提供价格参考。通过时间分段与可视化比较，发现部分电价走势反复出现，复杂走势可以由基础模式加权组合。据此提取基础走势，再结合天气信息确定组合权重，生成电价估计，支持定价与利润空间评估。",
+          "style": "",
+          "runs": [
+            {
+              "text": "机器学习模型｜",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "电",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "价时序数据",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "历史",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "走势",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模式",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "分析与估计",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "从历史数据中提取重复出现的走势，再结合外部条件",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "加权组合",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "，估计新的",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "电价",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "变化。",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "整合历史电价、发电记录和天气预报",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "数据",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "，为售电定价提供价格参考",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "通过时间分段与可视化比较，发现部分电价走势反复出现，复杂走势可以由基础模式加权组合。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "据此提取基础走势，再结合天气信息确定组合权重，生成电价估计，支持定价与利润空间评估。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-015",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-016",
+          "text": "早稻田大学（2025-今）",
+          "style": "",
+          "runs": [
+            {
+              "text": "早稻田大学（2025-今）",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-mpi",
+          "text": "带有先验知识约束的特征提取与图像恢复：MPI血管成像重建逆问题需要结构拓扑辅助监督约束。MPI成像在血管成像上具有巨大潜力，然而它的瓶颈在于图像重建：配准时间长、逆问题重建不清晰。血管结构清晰是MPI血管图像重建的关键要求。通过引入结构辅助监督，保证信号表示中具备可用于恢复血管结构的有效信息，从而提高血管重建精度。",
+          "style": "",
+          "runs": [
+            {
+              "text": "带有先验知识约束的",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特征提取与",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "图像",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "恢复",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "MPI血管成像重建逆问题需要结构拓扑辅助监督约束。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "MPI成像在血管成像上具有巨大潜力，然而它的瓶颈在于图像重建：配准时间长、逆问题重建不清晰。血管结构清晰是MPI血管图像重建的关键要求。通过引入结构辅助监督，保证信号表示中具备可用于恢复血管结构的有效信息，从而提高血管重建精度。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-018",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-019",
+          "text": "东北大学 · 2022—2025",
+          "style": "",
+          "runs": [
+            {
+              "text": "东北大学 · 202",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "2",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "—2025",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-020",
+          "text": "方向：关系数据中的模式识别与特征选择",
+          "style": "",
+          "runs": [
+            {
+              "text": "方向：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "关系数据中的模式识别",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "与",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "征选择",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-021",
+          "text": "围绕时序、关系网络与脑影像数据，开展特征筛选、模式匹配、关系分析及跨数据复用，检验不同信息对样本分类、群体划分和结果估计的作用。",
+          "style": "",
+          "runs": [
+            {
+              "text": "围绕时序、关系网络与脑影像数据，开展特征筛选、模式匹配、关系分析及跨数据复用，检验不同信息对样本分类、群体划分和结果估计的作用。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-022",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-023",
+          "text": "时序数据的稳定/突变模式解耦与任务相关特征筛选",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "时序数据的",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "稳定/突变",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模式",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "解耦",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "与",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "任务相关",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特征筛选",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-stdgl",
+          "text": "STDGL｜稳定信息与变化信息的对照分析：通过设计解耦模型将动态图序列的稳定时序模式与突变时序模式分开，检验不同任务究竟需要哪一类特征中的预测线索。在Bitcoin-Alpha用户关系网络中，估计下一时刻会出现哪些连接时，突变特征更有效；判断用户关系类别时，稳定特征更有效。在Elliptic交易网络的节点分类中，两类特征组合使用的效果最好。这项分析明确了不同任务的特征需求。",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "STDGL｜稳定信息与变化信息的对照分析",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "通过设计解耦模型",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "将",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "动态图序列的",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "稳定",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "时序",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模式",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "与",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "突变",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "时序",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模式",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "分开，检验不同任务究竟需要哪一类特征",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "中",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "的预测线索",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "在Bitcoin-Alpha用户关系网络中，估计下一时刻会出现哪些连接时，",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "突变",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特征更有效；判断",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "用户",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "关系",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "类别时，稳定特征更有效。在Elliptic交易网络的节点分类中，两类特征组合使用的效果最好。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "这项分析明确了不同任务的特征需求",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-sdbd",
+          "text": "SDBD｜持续模式提取与波动分离：通过设计解耦模型，关注脑疾病诊断相关时序特征提取与无关波动分离，检查哪些信息值得保留。针对短暂波动可能干扰疾病识别的问题，将持续出现的连接模式与短暂变化分开，评估所保留特征的分类效果及其来源。使用持续模式时，自闭症识别准确率达到70.4%；进一步分析发现，15个关键脑区中有10个属于中央执行网络。分析既检验了特征是否有用，也定位了这些信息主要来自哪里。",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "SDBD｜持续模式提取与波动分离",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "通过设计解耦模型",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "，",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "关注",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "脑",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "疾病诊断",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "相关",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "时序",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特征提取与无关波动分离",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "，检查哪些信息值得保留",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "针对短暂波动可能干扰疾病识别的问题，将持续出现的连接模式与短暂变化分开，评估所保留特征的分类效果及其来源。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "使用持续模式时，自闭症识别准确率达到70.4%；进一步分析发现，15个关键脑区中有10个属于中央执行网络。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "分析既检验了特征是否有用，也定位了这些信息主要来自哪里",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-026",
+          "text": "纵向数据的模式库构建与样本匹配",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "纵向数据的模式库构建与样本匹配",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-sintbanknet",
+          "text": "SIntBankNet｜基础模式匹配与患者分组分析：数据模式记忆数据库与新模式加权匹配复用，按变化模式区分群体，再分别检验早期信息与后续结果之间的关系。同样经历抑郁发作，患者的脑网络也可能沿着不同的轨迹变化。对多时间点纵向脑影像数据提取特征，通过主成分分析构建基础模式库，将新时间点的脑影像与基础模式进行加权匹配，用组合权重描述观测特征；再结合治疗期间的变化轨迹进行患者分组。两组在治疗首周呈现不同的平均脑连接变化：默认模式网络与背侧注意网络的联系，第一组减弱，第二组增强。第一组治疗前两周的连接变化能够帮助估计出院时抑郁、焦虑和失眠症状改善；第二组尚未发现显著关联。项目将模式复用与分组检验结合，明确了这类早期指标的人群适用差异。",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "SIntBankNet",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "｜基础模式匹配与患者分组分析",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "数据模式记忆数据库与新模式加权匹配复用，",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "按变化模式区分群体，再分别检验早期信息与后续结果之间的关系",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "同样经历抑郁发作，患者的脑网络也可能沿着不同的轨迹变化。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "对多时间点",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "纵向",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "脑影像",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "数据",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "提取特征，通过主成分分析构建基础模式库，将新",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "时间点的脑",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "影像与基础模式",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "进行",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "加权匹配，用组合权重描述观测特征；再结合治疗期间的变化轨迹进行患者分组。两组在治疗首周呈现不同的平均",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "脑",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "连接变化：默认模式网络与背侧注意网络的联系，第一组减弱，第二组增强。第一组治疗前两周的连接变化能够帮助估计出院时抑郁、焦虑和失眠症状改善；第二组",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "尚",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "未发现显著关联。项目将模式复用与分组检验结合，明确了这类早期指标的人群适用差异。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-028",
+          "text": "连接网络数据的模式识别与特征组合",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "连接",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "网络数据的模式识别与特征组合",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-graphtel",
+          "text": "GraphTEL｜异构数据整体与局部特征模式整合学习：当对象自身的属性不足以区分样本时，进一步分析它们的连接模式能够提供更多的线索。围绕“属性相似，但所属类别不同”的样本区分问题，将整体连接方式与局部连接细节纳入特征提取，并通过让模型恢复被遮住的连接来迫使模型学习这些关系模式。在多个数据集的测试中，模型准确率均高于对比方法GraphMAE。这些结果表明，连接方式提供了对象属性之外的有效分类信息。",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "GraphTEL",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "｜",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "异构数据",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "整体与局部",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特征",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模式整合学习",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "当",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "对象自身的属性不足以区分样本时，进一步分析它们的连接",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模式",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "能够提供更多的线索",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "围绕“属性相似，但所属类别不同”的样本区分问题，将整体连接方式与局部连接细节纳入特征提取，并通过",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "让模型",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "恢复被遮住的连接",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "来迫使模型",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "学习这些关系模式。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "在",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "多个数据集的测试中",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "，",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模型",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "准",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "确率",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "均",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "高于对比方法",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "GraphMAE",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "这些结果表明，连接方式提供了对象属性之外的有效分类信息。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-braintgl",
+          "text": "BrainTGL｜多变量时序数据的动态特征联合建模：同时分析脑区自身的时序变化和脑区连接的动态变化，检验两类信息能否共同改善疾病诊断性能：将脑区活动记录与脑区间随时间变化的连接共同作为分析对象，结合 GCN 与 LSTM 学习关系特征和时间变化。在自闭症识别测试中模型达到67.8%的准确率，对比方法GroupINN和ST-GCN分别为63.4%和59.2%；在抑郁症与双相障碍识别中，准确率分别为73.2%和72.0%。结果支持同时利用变量自身的变化和变量之间的联系变化。",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "BrainTGL",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "｜",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "多变量时序",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "数据的",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "动态",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特征联合建模",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "同时分析",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "脑区",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "自身的",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "时序",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "变化和",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "脑区",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "连接的",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "动态",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "变化，检验两类信息能否共同改善",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "疾病诊断",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "性能：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "将脑区活动记录与脑区间随时间变化的连接共同作为分析对象，结合 GCN 与 LSTM 学习关系特征和时间变化。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "在自闭症识别",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "测试",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "中",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模型",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "达到67.8%的准确率，对比方法",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "GroupINN",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "和ST-GCN分别为63.4%和59.2%；在抑郁症与双相障碍识别中，准确率分别为73.2%和72.0%。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "结果支持同时利用变量自身的变化和变量之间的联系变化",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-brainhgl",
+          "text": "BrainHGL｜连接类型划分与关键连接分析：区分连接关系的类型，再分析哪些连接组合对不同分类任务有用：按脑区所属的功能网络划分连接类型，构建网络内部、网络之间及多网络组合的特征，比较它们对分类的贡献。抑郁症识别中，最重要的模式通过显著性网络连接默认模式网络与中央执行网络；自闭症识别的前四类关键模式，则都包含默认模式网络与中央执行网络之间的联系。分析将不同分类任务的判断依据定位到了具体的关系组合。",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "BrainHGL",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "｜",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "连接",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "类型划分与关键",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "连接",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "分析",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "区分",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "连接",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "关系的类型，再分析哪些连接组合对不同分类任务有用：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "按脑区所属的功能网络划分连接类型，构建网络内部、网络之间及多网络组合的特征，比较它们对分类的贡献。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "抑郁症识别中，最重要的模式通过显著性网络连接默认模式网络与中央执行网络；自闭症识别的前四类关键模式，则都包含默认模式网络与中央执行网络之间的联系。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "分析将不同分类任务的判断依据定位到了具体的关系组合。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-032",
+          "text": "图数据的跨数据集任务无关鲁棒特征提取与复用",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "图数据的跨数据集",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "任务无关",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "鲁棒",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "特征",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "提取",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "与",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "复用",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "project-ds-braingsl",
+          "text": "BrainGSL｜有限标注下的跨数据特征复用：先从数据本身学习任务无关的鲁棒通用模式，再检验这些模式能否在相关任务之间复用：针对医学标注不足，先通过遮挡与恢复连接学习数据特征，再用于疾病分类，并比较不同疾病数据之间的迁移效果。自闭症数据中学到的特征能够改善双相障碍识别，反向迁移同样有效。 结果支持在这些相关任务之间复用部分连接特征，为目标任务提供额外信息。",
+          "style": "a9",
+          "runs": [
+            {
+              "text": "BrainGSL",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "｜有限标注下的跨数据特征复用",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "先",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "从数据本身学习",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "任务无关的",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "鲁棒通用",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "模",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "式",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "，再检验这些模式能否在相关任务之间复用",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "：",
+              "bold": true,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "针对医学标注不足，先",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "通过遮挡与恢复连接学习数据特征，再用于疾病分类，并比较不同疾病数据之间的迁移效果。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "自闭症数据中学到的特征能够改善双相障碍识别，反向迁移同样有效。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": " 结果支持在这些相关任务之间复用部分连接特征，为目标任务提供额外信息。",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-034",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-035",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-036",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-037",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-038",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "all-publications",
+          "text": "[1] L Liu, P Cao, G Wen, Z Jia, J Yang, W Li, OR Zaiane. Structure-aware Self-supervised Graph Representation Learning. DASFAA 2025 - International Conference on Database Systems for Advanced Applications, 2025.",
+          "style": "",
+          "runs": [
+            {
+              "text": "[1] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "L Liu, P Cao, G Wen, Z Jia, J Yang, W Li, OR ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "Zaiane",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": ". Structure-aware Self-supervised Graph Representation Learning. DASFAA 2025 - International Conference on Database Systems for Advanced Applications, 2025.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-040",
+          "text": "[2] J Duan, G Wen, L Liu, S Gu, J Zhou, J Xu, R Zhu, S Hu, P Cao, F Wang. Divergent neural trajectories in young patients with major depressive episodes: longitudinal subtypes and their predictive value for treatment outcomes. Science Bulletin, S2095-9273 (25) 00917-X, 2025.",
+          "style": "",
+          "runs": [
+            {
+              "text": "[2] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "J Duan, G Wen, L Liu, S Gu, J Zhou, J Xu, R Zhu, S Hu, P Cao, F Wang. Divergent neural trajectories in young patients with major depressive episodes: longitudinal subtypes and their predictive value for treatment outcomes. Science Bulletin, S2095-9273 (25) 00917-X, 2025.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-041",
+          "text": "[3] L Liu, G Wen, P Cao, J Yang, W Li, OR Zaiane. Capturing temporal node evolution via self-supervised learning: A new perspective on dynamic graph learning. WSDM 2024 - Proceedings of the 17th ACM International Conference on Web Search and Data Mining, 2024.",
+          "style": "",
+          "runs": [
+            {
+              "text": "[3] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "L Liu, G Wen, P Cao, J Yang, W Li, OR ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "Zaiane",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": ". Capturing temporal node evolution via self-supervised learning: A new perspective on dynamic graph learning. WSDM 2024 - Proceedings of the 17th ACM International Conference on Web Search and Data Mining, 2024.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-042",
+          "text": "[4] G Wen, P Cao, L Liu, M Hao, S Liu, J Zheng, J Yang, OR Zaiane, F Wang. Heterogeneous Graph Representation Learning Framework for Resting-State Functional Connectivity Analysis. IEEE Transactions on Medical Imaging, 2024.",
+          "style": "",
+          "runs": [
+            {
+              "text": "[4] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "G Wen, P Cao, L Liu, M Hao, S Liu, J Zheng, J Yang, OR ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "Zaiane",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": ", F Wang. Heterogeneous Graph Representation Learning Framework for Resting-State Functional Connectivity Analysis. IEEE Transactions on Medical Imaging, 2024.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-043",
+          "text": "Z Lin, G Wen, P Cao, L Liu, J Yang, X Zhu, OR Zaiane, F Wang. Towards Disease-Aware [5] Self-Supervised Dynamic Brain Network Learning For Mental Diagnosis. ICASSP 2024 - IEEE International Conference on Acoustics, Speech and Signal Processing, 2024.",
+          "style": "",
+          "runs": [
+            {
+              "text": "Z Lin, G Wen, P Cao, L Liu, J Yang, X Zhu, OR ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "Zaiane",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": ", F Wang. Towards Disease-Aware ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "[5] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "Self-Supervised Dynamic Brain Network Learning ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "For",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": " Mental Diagnosis. ICASSP 2024 - IEEE International Conference on Acoustics, Speech and Signal Processing, 2024.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-044",
+          "text": "[6] L Liu, G Wen, P Cao, T Hong, J Yang, X Zhang, OR Zaiane. BrainTGL: A dynamic graph representation learning model for brain network analysis. Computers in Biology and Medicine 153, 106521, 2023.",
+          "style": "",
+          "runs": [
+            {
+              "text": "[",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "6",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "L Liu, G Wen, P Cao, T Hong, J Yang, X Zhang, OR ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "Zaiane",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": ". ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "BrainTGL",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": ": A dynamic graph representation learning model for brain network analysis. Computers in Biology and Medicine 153, 106521, 2023.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-045",
+          "text": "[7] G Wen, P Cao, L Liu, J Yang, X Zhang, F Wang, OR Zaiane. Graph self-supervised learning with application to brain networks analysis. IEEE Journal of Biomedical and Health Informatics 27 (8), 4154-4165, 2023.",
+          "style": "",
+          "runs": [
+            {
+              "text": "[",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "7",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "G Wen, P Cao, L Liu, J Yang, X Zhang, F Wang, OR ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "Zaiane",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": ". Graph self-supervised learning with application to brain networks analysis. IEEE Journal of Biomedical and Health Informatics 27 (8), 4154-4165, 2023.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-046",
+          "text": "[8] L Gu, B Sun, L Liu, Y Li, Q Zhang, J Yang. Research and verification of a new relaxation technology based on virtual reality for human psychological security and psychosomatic recovery. 2021 IEEE International Conference on Intelligence and Safety for Robotics, 2021.",
+          "style": "",
+          "runs": [
+            {
+              "text": "[",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "8",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "] ",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            },
+            {
+              "text": "L Gu, B Sun, L Liu, Y Li, Q Zhang, J Yang. Research and verification of a new relaxation technology based on virtual reality for human psychological security and psychosomatic recovery. 2021 IEEE International Conference on Intelligence and Safety for Robotics, 2021.",
+              "bold": false,
+              "italic": false,
+              "underline": false
+            }
+          ]
+        },
+        {
+          "id": "ds-source-047",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-048",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-049",
+          "text": "",
+          "style": "",
+          "runs": []
+        },
+        {
+          "id": "ds-source-050",
+          "text": "",
+          "style": "",
+          "runs": []
+        }
+      ]
     },
     "business": {
       "label": {

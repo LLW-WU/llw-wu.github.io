@@ -39,6 +39,11 @@
     for(const id of ['research','data','business']) {
       const t=raw.tracks[id]||{}, out={};
       for(const k of ['label','title','concept','statement','summary','emptyMessage'])out[k]=bi(t[k]);
+      out.sourceBlocks=(Array.isArray(t.sourceBlocks)?t.sourceBlocks:[]).map((block,i)=>({
+        id:/^[a-z0-9_-]+$/i.test(text(block.id))?block.id:'ds-source-'+i,
+        text:text(block.text),style:text(block.style),
+        runs:(Array.isArray(block.runs)?block.runs:[]).map(run=>({text:text(run.text),bold:run.bold===true,italic:run.italic===true,underline:run.underline===true}))
+      }));
       if(!out.label.zh&&!out.label.en)out.label={zh:{research:'学术科研',data:'数据分析',business:'商业设计'}[id],en:{research:'AI Research',data:'Data Science',business:'Business Design'}[id]};
       for(const field of ['steps','strengths']) {
         out[field]={zh:[],en:[]};
