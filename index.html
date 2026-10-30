@@ -3,54 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="刘令文 · 学术科研、数据分析与商业设计。">
+  <meta name="description" content="刘令文，早稻田大学博士研究生。结构信息表示学习、脑网络分析与 MPI 血管重建。">
   <meta name="theme-color" content="#ffffff">
   <title>刘令文 | 个人主页</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="style.css?v=20261028-ds-exact-v21">
-  <script defer src="content.js?v=20261028-ds-exact-v21"></script>
-  <script defer src="site-core.js?v=20261028-ds-exact-v21"></script>
-  <script defer src="app.js?v=20261028-ds-exact-v21"></script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%239c354b'/%3E%3Ctext x='32' y='43' text-anchor='middle' fill='white' font-family='Georgia' font-size='33'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css?v=20261030-normal-context">
+  <script defer src="content.js?v=20261030-merged-pubs"></script>
+  <script defer src="site-core.js"></script>
+  <script defer src="app.js?v=20261030-normal-context"></script>
 </head>
 <body>
   <a class="skip-link" id="skip-link" href="#main">跳转到正文</a>
-  <header class="site-header">
-    <div class="container header-inner">
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="site-name" id="site-name" href="#home">刘令文</a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="#home" data-page="home">首页</a>
+        <a href="#research" data-page="research">学术科研</a>
+        <a href="#data" data-page="data">数据分析</a>
+        <a href="#business" data-page="business">商业设计</a>
+      </nav>
       <div class="language-switch" role="group" aria-label="语言 / Language">
-        <button type="button" data-lang="zh" aria-pressed="true">中文</button>
-        <span aria-hidden="true">/</span>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="zh" aria-pressed="true">中文</button><span aria-hidden="true">/</span><button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
     </div>
   </header>
-  <main class="container cv-layout" id="main">
-    <aside class="intro" id="home" aria-label="关于我">
-      <div class="portrait" id="portrait" hidden></div>
-      <div class="intro-copy">
-        <h1 id="profile-name">刘令文</h1>
-        <p class="affiliation" id="profile-affiliation"></p>
-        <p class="bio" id="profile-bio"></p>
-        <nav class="profile-links" id="profile-links" aria-label="联系方式"></nav>
-        <section class="profile-experience" id="profile-experience" aria-labelledby="experience-label">
-          <h2 class="sidebar-heading" id="experience-label">教育经历</h2>
-          <div id="experience-list"></div>
-        </section>
-        <nav class="page-toc" id="page-toc" aria-labelledby="toc-label"></nav>
+  <div class="page-layout">
+    <aside class="author-sidebar" id="author-sidebar" aria-label="个人信息">
+      <a class="author-avatar" href="#home" id="portrait-link"><img id="profile-photo" src="selfphoto.jpg" alt="刘令文" width="176" height="176"></a>
+      <div class="author-copy">
+        <h2 class="author-name" id="profile-name">刘令文</h2>
+        <p class="author-affiliation" id="profile-affiliation">早稻田大学 · 博士研究生</p>
+        <ul class="author-links" id="profile-links"></ul>
       </div>
+      <section class="sidebar-education" id="sidebar-education" aria-labelledby="sidebar-education-title"></section>
+      <nav class="page-toc" id="page-toc" aria-label="本页目录" hidden></nav>
     </aside>
-    <div class="focus">
-      <div class="tabs" role="tablist" aria-label="选择专业方向" id="focus-tabs">
-        <a id="tab-research" class="tab" href="#research" role="tab" aria-controls="panel-research" aria-selected="true">学术科研</a>
-        <a id="tab-data" class="tab" href="#data" role="tab" aria-controls="panel-data" aria-selected="false" tabindex="-1">数据分析</a>
-        <a id="tab-business" class="tab" href="#business" role="tab" aria-controls="panel-business" aria-selected="false" tabindex="-1">商业设计</a>
-      </div>
-      <div id="tab-panels"><p class="loading-note">正在载入内容…</p></div>
-      <noscript><p>此主页需要 JavaScript 才能切换语言和显示项目。请在浏览器中启用 JavaScript。</p></noscript>
-    </div>
-  </main>
-  <footer class="container footer">
-    <span id="footer-text">刘令文 · 个人主页</span>
-    <a class="editor-entry" id="edit-entry" href="edit.html">编辑内容</a>
+    <main id="main" class="page-content" tabindex="-1">
+      <p>正在载入主页…</p>
+      <noscript>请启用 JavaScript，以查看全部内容并切换语言。</noscript>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner"><span id="footer-text">© 2026 刘令文</span><div class="footer-links"><a id="footer-scholar" href="https://scholar.google.com/citations?user=CKPYcu4AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a><a id="edit-entry" href="edit.html">编辑内容</a><a id="back-top" href="#top">返回顶部 ↑</a></div></div>
   </footer>
+  <dialog class="figure-dialog" id="figure-dialog" aria-labelledby="figure-title"><div class="figure-bar"><h2 id="figure-title"></h2><button id="figure-close" type="button" aria-label="关闭图片">×</button></div><figure><img id="figure-image" alt=""><figcaption id="figure-source"></figcaption></figure></dialog>
 </body>
 </html>

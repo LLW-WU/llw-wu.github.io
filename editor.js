@@ -6,7 +6,7 @@
   let SOURCE;
   try{SOURCE=C.normalize(window.SITE_CONTENT);}catch(e){form.textContent=e.message;return;}
   const clone=x=>JSON.parse(JSON.stringify(x)), E=C.node, T=C.text;
-  const KEY='llw-homepage-draft-doc-v3',stamp=SOURCE.revision;
+  const KEY='llw-academic-draft-20261030',stamp=SOURCE.revision;
   const guides={
     research:['科研中文正文按最新提供的 AR 文案更新；英文为对应译文，没有补写新的研究结论。','项目先展示模型图、简述和主要结果；原核心观点与正文保留在各自的完整介绍中。','校对提醒（正文仍按提供文案保留）：文案使用 SBDL，前面提供的对应论文使用 SDBD。','校对提醒（正文仍按提供文案保留）：BrainTGL 文案中的 67.8%、73.2%、72.0%，前面讨论中对应的是集成版本 BrainTGL-en。','旧版完整论文表与链接保留；本次没有重新核对所有书目信息。'],
     data:['九个案例的中文名称和正文已按 Self内容-2-DS.docx 原文恢复，只做标题拆分与段落排版，不另写能力概括。','第一步把BCGX的流程写下来','第二步撰写下来你在每一步进行的判断过程','第三步，尝试把BCGX的模拟题当成案例写在下方的案例表里，重点写判断过程（主要体现你在DS过程中的conceptual key word理念）','BCG X 的流程与模拟案例是待写内容，目前未作为已完成经历公开。'],
@@ -94,7 +94,7 @@
       field(display,'图片来源（论文、图号和页码）',path+'.modelSource',p.modelSource);item.append(display);
       const personal=E('section','personal-fields');personal.append(E('h3','form-subhead','我的角色与工作'));
       lf(personal,'我的角色',path+'.role',p.role,{placeholder:'待你填写'});
-      lf(personal,'我的具体工作',path+'.contribution',p.contribution,{multiline:true,rows:4,placeholder:'待你填写',hint:'留空时，主页保留待填写区域；可分别填写中文和英文。'});
+      lf(personal,'我的具体工作',path+'.contribution',p.contribution,{multiline:true,rows:4,placeholder:'待你填写',hint:'留空时，主页不显示该段；可分别填写中文和英文。'});
       field(personal,'关联发表论文',path+'.publicationId',p.publicationId,{select:[['','按论文网址自动匹配'],...draft.publications.map(paper=>[paper.id,C.local(paper.title,lang)||paper.id])]});item.append(personal);
     }
     lf(item,'核心观点（正文为空时展示）',path+'.takeaway',p.takeaway,{multiline:true,rows:3});
@@ -124,12 +124,12 @@
     lf(form,key==='research'?'研究宗旨 / Research focus':key==='data'?'分析思路 / Analytical approach':'Key idea / Conceptual key word','tracks.'+key+'.concept',t.concept,{placeholder:key==='business'?'留空，待你自己确定':''});
     lf(form,'一句话说明','tracks.'+key+'.statement',t.statement,{multiline:true,rows:2});
     lf(form,'方向介绍','tracks.'+key+'.summary',t.summary,{multiline:true,rows:3});
-    if(key==='research'||key==='data')field(form,(key==='data'?'分析能力':'研究能力')+'（每行一项）','tracks.'+key+'.strengths.'+lang,(t.strengths[lang]||[]).join('\n'),{multiline:true,rows:4,hint:'在首页显示，可用 **文字** 突出能力名称。'});
+    if(key==='research'||key==='data')field(form,(key==='data'?'分析能力':'研究能力')+'（每行一项）','tracks.'+key+'.strengths.'+lang,(t.strengths[lang]||[]).join('\n'),{multiline:true,rows:4,hint:'在对应栏目显示，可用 **文字** 突出能力名称。'});
     if(key!=='research')field(form,'工作流程（每行一步）','tracks.'+key+'.steps.'+lang,(t.steps[lang]||[]).join('\n'),{multiline:true,rows:5,hint:'按实际课程或练习填写；目前没有代填 BCGX 或商业课程流程。'});
     const settings=E('details','form-details');settings.append(E('summary','','栏目名称与分组设置'));
     lf(settings,'导航栏名称','tracks.'+key+'.label',t.label);lf(settings,'栏目标题','tracks.'+key+'.title',t.title);
     lf(settings,'还没有公开项目时显示的文字','tracks.'+key+'.emptyMessage',t.emptyMessage);
-    settings.append(E('p','field-hint','相邻分组的学校与时间完全相同时，会合并显示一个学校标题。'));
+    settings.append(E('p','field-hint','学校与时间用于侧栏教育经历；项目页统一展示，不再按学校分组。'));
     t.groups.forEach((g,i)=>settings.append(groupEditor(g,i,key)));command(settings,'＋ 新增学校 / 方向','group-add',{key});form.append(settings);
     form.append(E('h3','form-subhead',key==='research'?'项目正文':'案例'));
     if(!t.projects.length)form.append(E('p','form-help','还没有案例。点击下方按钮新增，不会自动填入任何成果。'));
@@ -137,7 +137,7 @@
     command(form,key==='research'?'＋ 新增项目':'＋ 新增案例','project-add',{key});
   }
   function renderPapers() {
-    heading('论文列表','完整论文表在科研页底部直接按引用格式展示：作者、原文题名、期刊或会议、年份。题名链接到论文页面。');
+    heading('论文列表','论文列表展示在学术科研项目下方，包含作者、原文题名和期刊或会议，不显示年份。年份字段保留用于资料维护；题名链接到论文页面。');
     draft.publications.forEach((p,i)=>{
       const item=E('details','editor-item');item.dataset.editorId=p.id;
       item.append(E('summary','editor-item-title',C.local(p.title,lang)||'未命名论文'));
@@ -227,7 +227,7 @@
     download('writing-notes.md',out,'text/markdown;charset=utf-8');
   });
   const dialog=document.getElementById('preview-dialog'),frame=document.getElementById('preview-frame');
-  function sendPreview(){frame.contentWindow?.postMessage({type:'llw-preview-content',content:draft,lang,track:['research','data','business'].includes(active)?active:'research'},'*');}
+  function sendPreview(){frame.contentWindow?.postMessage({type:'llw-preview-content',content:draft,lang,track:active==='profile'?'home':active},'*');}
   document.getElementById('preview-button').addEventListener('click',()=>{
     dialog.showModal();
     if(!window.LLW_PREVIEW_TEMPLATE){status.textContent='缺少 preview-template.js，请把它放到同一目录。';dialog.close();return;}
