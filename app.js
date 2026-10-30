@@ -96,10 +96,6 @@
     const overview=L(t.summary).replace(/^我的研究围绕结构信息的表示展开：/,'我').replace(/^My research centres on representations of structural information\.\s*/,'');
     intro.append(bio,P(L(data.profile.intro)),P(overview));
     main.append(intro);
-    const interests=E('section','home-section');interests.append(heading(s.interests));
-    const topics=E('ul','research-topics');
-    for(const g of t.groups.filter(g=>L(g.focus)&&L(g.connection))){const first=visibleProjects().find(p=>p.group===g.id);const li=E('li');li.append(localLink(L(g.focus),first?'project-'+first.id:'research'),document.createTextNode(' — '),E('span','topic-description',L(g.connection)));topics.append(li);}
-    interests.append(topics);main.append(interests);
     const services=E('section','home-services');services.id='home-directions';services.setAttribute('aria-labelledby','services-title');
     const servicesTitle=heading(lang==='zh'?'我能做什么':'How I can help','services-title');servicesTitle.id='services-title';
     services.append(servicesTitle,P(lang==='zh'?'以研究理解问题，以数据支持判断。':'Understanding problems through research. Informing decisions with data.','services-intro'));
